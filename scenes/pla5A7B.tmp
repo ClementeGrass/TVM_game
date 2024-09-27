@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://cwst36spixodp"]
+
+[ext_resource type="Texture2D" uid="uid://bsyqjp7k5i3dq" path="res://assets/player.png" id="1_3rbwx"]
+[ext_resource type="Script" path="res://scenes/player_1.gd" id="1_eilxh"]
+[ext_resource type="PackedScene" uid="uid://bo6wcby584shn" path="res://scenes/potato.tscn" id="2_gy4wm"]
+[ext_resource type="Script" path="res://components/hitbox.gd" id="4_wlbmr"]
+[ext_resource type="Script" path="res://components/hurtbox.gd" id="5_bje53"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o57ol"]
+size = Vector2(17, 22)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ijd3t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4lk75"]
+
+[node name="Player1" type="CharacterBody2D"]
+script = ExtResource("1_eilxh")
+potato_scene = ExtResource("2_gy4wm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_o57ol")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.584)
+texture = ExtResource("1_3rbwx")
+hframes = 6
+vframes = 12
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://scenes/potato.tscn")
+spawn_path = NodePath(".")
+
+[node name="Reach" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 0
+script = ExtResource("4_wlbmr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Reach"]
+position = Vector2(0, 5)
+scale = Vector2(1.75, 1.75)
+shape = SubResource("CircleShape2D_ijd3t")
+
+[node name="Caught" type="Area2D" parent="."]
+collision_layer = 3
+script = ExtResource("5_bje53")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caught"]
+position = Vector2(0, 6)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_4lk75")

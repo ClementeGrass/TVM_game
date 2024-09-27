@@ -16,7 +16,8 @@
 [ext_resource type="Script" path="res://states/falling.gd" id="13_5klvh"]
 [ext_resource type="Script" path="res://states/fallingjump.gd" id="14_1roxm"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6asou"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o57ol"]
+size = Vector2(17, 22)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ijd3t"]
 
@@ -185,14 +186,13 @@ _data = {
 }
 
 [node name="Player1" type="CharacterBody2D"]
-collision_layer = 2
 script = ExtResource("1_eilxh")
 potato_scene = ExtResource("2_gy4wm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5)
+position = Vector2(0, 6)
 scale = Vector2(1.5, 1.5)
-shape = SubResource("RectangleShape2D_6asou")
+shape = SubResource("RectangleShape2D_o57ol")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(1.5, 1.584)

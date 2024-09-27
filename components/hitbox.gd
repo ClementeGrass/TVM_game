@@ -1,6 +1,7 @@
 class_name Hitbox
 extends Area2D
 
-signal damagedealt()
+
+var id: int = 0
 
 @export var damage = 10
