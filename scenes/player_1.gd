@@ -22,6 +22,7 @@ var has_thrown_potato: bool = false
 var ignore_potato: bool = false
 var player
 var pos
+var id
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 
@@ -32,6 +33,7 @@ func setup(player_data: Statics.PlayerData,pos_:int,main: Node2D) -> void:
 	set_multiplayer_authority(player_data.id)
 	potato_spawner.set_multiplayer_authority(1)
 	reach.id = get_multiplayer_authority()
+	id = get_multiplayer_authority()
 
 func _ready():
 	reach_collision.disabled = true
@@ -136,6 +138,7 @@ func update_sprite(frame: int) -> void:
 
 
 func potato_changed(id_: int) -> void:
+	Debug.log("alo")
 	set_potato_state.rpc(true)
 	var instigator = Game.get_player(id_)
 	if instigator.scene:
@@ -144,6 +147,7 @@ func potato_changed(id_: int) -> void:
 		
 @rpc("any_peer", "reliable", "call_local")
 func set_potato_state(state:bool) -> void:
+	Debug.log(get_multiplayer_authority())
 	has_potato = state
 	
 func stun() -> void:
