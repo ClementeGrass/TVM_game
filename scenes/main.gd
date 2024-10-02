@@ -18,7 +18,7 @@ func _ready() -> void:
 			var player_inst = player_scene.instantiate()
 			player_data.scene = player_inst
 			players.add_child(player_inst)
-			player_inst.setup(player_data,i,self)
+			player_inst.setup(player_data,i)
 			player_inst.global_position = markers.get_child(i).global_position
 		if multiplayer.is_server():
 			await get_tree().create_timer(1).timeout
