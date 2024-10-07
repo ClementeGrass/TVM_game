@@ -11,7 +11,7 @@ func enter() -> void:
 	crouch_animation.play("crouch")
 	parent.rpc("send_animation","crouch")
 	parent.change_collision_shape(RectangleShape2D.new(),1.5,1,15)
-	parent.rpc("send_collision_shape",RectangleShape2D.new(),1.5,1,15)
+	parent.rpc("send_collision_shape",0,1.5,1,15)
 	
 func update(event:InputEvent) -> State:
 	if event != null:

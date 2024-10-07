@@ -17,5 +17,9 @@ func update(event: InputEvent) -> State:
 	if !state_machine.is_frozen:
 		return moving_state
 	return null	
+	
+func Physics_update(delta:float) -> void:
+	if not parent.is_on_floor():
+		parent.velocity.y += delta * gravity	
 		
 	

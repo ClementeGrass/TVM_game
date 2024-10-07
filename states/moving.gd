@@ -13,6 +13,8 @@ var ACCELERATION = 1000.0
 func enter() -> void:
 	moving_animation.play("walking")
 	parent.rpc("send_animation","walking")
+	parent.change_collision_shape(RectangleShape2D.new(),1.5,1.5,6)
+	parent.rpc("send_collision_shape",0,1.5,1.5,6)
 # Called when the node enters the scene tree for the first time.
 func update(event: InputEvent) -> State:
 	if event != null:

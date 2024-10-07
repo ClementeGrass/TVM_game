@@ -2,7 +2,7 @@ extends Timer
 
 @onready var round_timer = $"."
 @onready var timer_label = $TimerLabel
-var round_duration = 20
+var round_duration = 60
 var round_over = true
 
 var maps = [
