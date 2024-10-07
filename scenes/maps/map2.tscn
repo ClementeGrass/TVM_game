@@ -18,7 +18,7 @@ player_scene = ExtResource("2_b0ar2")
 [node name="Markers" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="Markers"]
-position = Vector2(319, 654)
+position = Vector2(316, 652)
 
 [node name="Marker2D2" type="Marker2D" parent="Markers"]
 position = Vector2(739, 652)
