@@ -189,6 +189,10 @@ func potato_changed(id_: int) -> void:
 func set_potato_state(state:bool) -> void:
 	Debug.log(get_multiplayer_authority())
 	has_potato = state
+	if has_potato:
+		sprite.modulate = Color(1.0,0.5,0.5)
+	else:
+		sprite.modulate = Color(1.0,1.0,1.0)	
 	
 	
 #Function called upon when i have been stunned (caught by the player woith the potato	
