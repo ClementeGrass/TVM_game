@@ -7,6 +7,7 @@ var ACCELERATION = 1000.0
 @export var jump_state: State
 @export var rolling_state: State
 @export var falling_state: State
+@export var wallride_state: State
 @export var moving_animation: AnimationPlayer
 @export var sprite: Sprite2D
 
@@ -18,6 +19,8 @@ func enter() -> void:
 # Called when the node enters the scene tree for the first time.
 func update(event: InputEvent) -> State:
 	if event != null:
+		if parent.is_on_wall_only() and event.is_action_pressed("wall_grab"):
+			return wallride_state	
 		if not parent.is_on_floor() and event.is_action_pressed("crouch"):
 			return falling_state	
 		if event.is_action_pressed("crouch"):

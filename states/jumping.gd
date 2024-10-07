@@ -5,6 +5,7 @@ class_name Jumping
 @export var moving_state: State
 @export var falling_state: State
 @export var fallJump_state :State
+@export var wallride_state: State
 @export var jumping_animation: AnimationPlayer
 @export var sprite: Sprite2D
 @export var state_machine: Node
@@ -28,6 +29,8 @@ func update(event: InputEvent) -> State:
 				parent.velocity.y = JUMP_VELOCITY
 		if not parent.is_on_floor() and event.is_action_pressed("crouch"):
 			return falling_state			
+		if parent.is_on_wall_only() and event.is_action_pressed("wall_grab"):
+			return wallride_state		
 	return null	
 
 func autoUpdate() -> State:
@@ -38,7 +41,7 @@ func autoUpdate() -> State:
 		if parent.velocity.x != 0:
 			return moving_state
 		else:
-			return idle_state
+			return idle_state	
 	return null		
 
 
