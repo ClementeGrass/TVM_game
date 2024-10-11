@@ -38,4 +38,9 @@ func _on_area_entered(area: Area2D) -> void:
 			owner.potato_changed(parent.id)
 		if parent.is_in_group("potato"):
 				parent.queue_free()
+		else:
+			var papas = get_tree().get_nodes_in_group("potato")
+			if papas.size()>0:
+				for papa in papas:
+					papa.queue_free()		
 				

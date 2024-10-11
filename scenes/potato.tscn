@@ -4,21 +4,21 @@
 [ext_resource type="Script" path="res://scenes/potato.gd" id="1_lixhe"]
 [ext_resource type="Texture2D" uid="uid://wscmxr8cgkqx" path="res://assets/Free_pixel_food_16x16/Icons/vegetable_potato.png" id="1_raeon"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_diocy"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_p4sfe"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_gxc3m"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8em28"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_6y70f"]
 
 [node name="Potato" type="RigidBody2D"]
 collision_layer = 0
 script = ExtResource("1_1khv0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_diocy")
+shape = SubResource("CircleShape2D_p4sfe")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_gxc3m")
@@ -30,7 +30,7 @@ collision_mask = 7
 script = ExtResource("1_lixhe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource("CircleShape2D_8em28")
+shape = SubResource("CircleShape2D_6y70f")
 
 [node name="Sprite2D" type="Sprite2D" parent="Hitbox"]
 texture = ExtResource("1_raeon")
