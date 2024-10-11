@@ -41,10 +41,12 @@ layer_1/tile_data = PackedInt32Array(786447, 1114112, 3, 524303, 1114112, 5, 655
 [node name="WorldBorders" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorders"]
+visible = false
 rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_l2yji")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldBorders"]
+visible = false
 position = Vector2(1024, 0)
 rotation = 4.71239
 shape = SubResource("WorldBoundaryShape2D_cd0mg")

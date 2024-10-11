@@ -160,8 +160,8 @@ func throw_Potato() -> void:
 	potato_inst.collision_mask = ~(1 << self.collision_layer)  # Desactivar colisión con el jugador que la lanza
 	
 	potato_spawner.add_child(potato_inst, true)
-	await _ignore_potato_temporarily(0.5) # ignore por 0.5 segundos la colisiones
 	has_thrown_potato = true  # Marcar que se ha lanzado una papa
+	await _ignore_potato_temporarily(0.5) # ignore por 0.5 segundos la colisiones
 	
 #Function that tells the player that they have picked up the potato they have thrown
 #Also makes sure that when i tag someone without using the potato, sets back to false has_thrown_potato
