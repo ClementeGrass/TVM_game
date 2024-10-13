@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://bj61qeglx5fkl"]
+
+[ext_resource type="Script" path="res://scenes/points.gd" id="1_56m7v"]
+
+[node name="points" type="Node2D"]
+script = ExtResource("1_56m7v")
+
+[node name="ronda" type="Label" parent="."]
+offset_left = 284.0
+offset_top = 563.0
+offset_right = 709.0
+offset_bottom = 697.0
+theme_override_font_sizes/font_size = 64
+text = "TEST RONDAS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="pj1" type="Label" parent="."]
+offset_left = 106.0
+offset_top = 236.0
+offset_right = 469.0
+offset_bottom = 473.0
+theme_override_font_sizes/font_size = 64
+text = "TEST PJ1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="pj2" type="Label" parent="."]
+offset_left = 528.0
+offset_top = 251.0
+offset_right = 898.0
+offset_bottom = 461.0
+theme_override_font_sizes/font_size = 64
+text = "TEST PJ2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ganador" type="Label" parent="."]
+offset_left = 32.0
+offset_top = 186.0
+offset_right = 995.0
+offset_bottom = 547.0
+theme_override_font_sizes/font_size = 93
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mejorde" type="Label" parent="."]
+offset_left = 19.0
+offset_top = 530.0
+offset_right = 982.0
+offset_bottom = 891.0
+theme_override_font_sizes/font_size = 64
+text = "TEST MEJOR DE"
+horizontal_alignment = 1
+vertical_alignment = 1

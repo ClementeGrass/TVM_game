@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Debug="*res://autoloads/debug.gd"
 Game="*res://autoloads/game.tscn"
+Global="*res://scenes/global.gd"
 
 [display]
 

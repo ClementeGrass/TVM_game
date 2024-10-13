@@ -2,17 +2,8 @@ extends Timer
 
 @onready var round_timer = $"."
 @onready var timer_label = $TimerLabel
-var round_duration = 60
+var round_duration = 5
 var round_over = true
-
-var maps = [
-	"res://scenes/main.tscn",
-	"res://scenes/maps/map1.tscn",
-	"res://scenes/maps/map2.tscn",
-	"res://scenes/maps/map3.tscn",
-	"res://scenes/maps/map4.tscn",
-	"res://scenes/maps/map5.tscn"
-]
 
 func _ready():
 	if is_multiplayer_authority():
@@ -43,11 +34,21 @@ func update_timer_label(time_left):
 func end_round():
 	timer_label.text = "Round Over!" 
 	print("Round over!")
-	var random_index = randi() % maps.size() 
-	var random_map = maps[random_index]
-	rpc("change_scene_for_all", random_map)
+	rpc("change_scene_for_all")
 
 @rpc("call_local", "reliable")
-func change_scene_for_all(map_path):
-	get_tree().change_scene_to_file(map_path)
+func change_scene_for_all():
+	var players = get_tree().current_scene.get_node("Players").get_children()
+	#PARA SISTEMA DE DOS JUGADORES SOLAMENTE
+	var i = 1
+	for player in players:
+		print(player.has_potato)
+		#Server tiene potato
+		if i == 1 and player.has_potato:
+			Global.point_j1 += 1
+		#Cliente tiene potato
+		if i == 2 and player.has_potato:
+			Global.point_j2 += 1
+		i += 1
+	get_tree().change_scene_to_file("res://scenes/maps/points.tscn")
 
