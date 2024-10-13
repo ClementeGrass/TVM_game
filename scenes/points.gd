@@ -34,10 +34,10 @@ func change_scene_for_all(map_path):
 	pj2.text = ""
 	curr_round.text = ""
 	mejorde.text = ""
-	#jugador 1 es cliente 
+	#jugador 1 es server 
 	if Global.point_j1 == (max_games / 2 + 1):
 		ganador.text = "JUGADOR 1 GANASTE"
-	#ugador 2 es server 
+	#ugador 2 es cleinte 
 	elif Global.point_j2 == (max_games / 2 + 1):
 		ganador.text = "JUGADOR 2 GANASTE"
 	else:
