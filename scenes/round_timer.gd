@@ -2,7 +2,7 @@ extends Timer
 
 @onready var round_timer = $"."
 @onready var timer_label = $TimerLabel
-var round_duration = 60
+var round_duration = 7
 var round_over = true
 
 var maps = [
@@ -50,4 +50,5 @@ func end_round():
 @rpc("call_local", "reliable")
 func change_scene_for_all(map_path):
 	get_tree().change_scene_to_file(map_path)
+
 
