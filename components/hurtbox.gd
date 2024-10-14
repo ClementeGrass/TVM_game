@@ -40,7 +40,11 @@ func _on_area_entered(area: Area2D) -> void:
 				parent.queue_free()
 		else:
 			var papas = get_tree().get_nodes_in_group("potato")
+<<<<<<< HEAD
 			if papas.size()!=0:
+=======
+			if papas.size()>0:
+>>>>>>> problemas_papas2
 				for papa in papas:
 					papa.queue_free()		
 				
