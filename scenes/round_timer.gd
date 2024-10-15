@@ -2,11 +2,7 @@ extends Timer
 
 @onready var round_timer = $"."
 @onready var timer_label = $TimerLabel
-<<<<<<< HEAD
-var round_duration = 5
-=======
 var round_duration = 7
->>>>>>> problemas_papas2
 var round_over = true
 
 func _ready():

@@ -24,6 +24,8 @@ var _menu_stack: Array[Control] = []
 @onready var start_timer: Timer = $StartTimer
 @onready var time_container: HBoxContainer = %TimeContainer
 @onready var time: Label = %Time
+@onready var potato1: Sprite2D =$VegetablePotato
+@onready var potato2: Sprite2D = $VegetablePotato2
 
 
 func _ready():
@@ -67,6 +69,8 @@ func _ready():
 
 
 func _process(_delta: float) -> void:
+	potato1.rotation += _delta
+	potato2.rotation += _delta
 	if !start_timer.is_stopped():
 		time.text = str(ceil(start_timer.time_left))
 

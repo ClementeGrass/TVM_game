@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bslhrv3eo36wd"]
+[gd_scene load_steps=6 format=3 uid="uid://bslhrv3eo36wd"]
 
 [ext_resource type="Script" path="res://scenes/lobby.gd" id="1_g2fmt"]
 [ext_resource type="PackedScene" uid="uid://chbh4lxk8rmmd" path="res://scenes/ui/lobby_player.tscn" id="2_060bj"]
+[ext_resource type="Texture2D" uid="uid://bfhs2qgj8vaol" path="res://assets/new_compressed_texture_2d.tres" id="3_gqi1y"]
+[ext_resource type="Texture2D" uid="uid://wscmxr8cgkqx" path="res://assets/Free_pixel_food_16x16/Icons/vegetable_potato.png" id="4_1i7c2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_njb2f"]
+font_size = 50
+font_color = Color(0.530636, 0.398566, 0.0169074, 1)
+outline_size = 5
 
 [node name="Lobby" type="MarginContainer"]
 anchors_preset = 15
@@ -131,6 +138,7 @@ text = "Back
 
 [node name="Ready" type="Button" parent="PanelContainer/Menus/ReadyMenu/HBoxContainer2"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Ready"
@@ -150,3 +158,28 @@ layout_mode = 2
 text = "5"
 
 [node name="StartTimer" type="Timer" parent="."]
+
+[node name="NewCompressedTexture2d" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(512, 383)
+scale = Vector2(1, 0.75)
+texture = ExtResource("3_gqi1y")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 700)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+text = "Papa Caliente"
+label_settings = SubResource("LabelSettings_njb2f")
+horizontal_alignment = 1
+
+[node name="VegetablePotato" type="Sprite2D" parent="."]
+position = Vector2(800, 300)
+scale = Vector2(10, 10)
+texture = ExtResource("4_1i7c2")
+
+[node name="VegetablePotato2" type="Sprite2D" parent="."]
+position = Vector2(250, 300)
+rotation = 3.14159
+scale = Vector2(10, 10)
+texture = ExtResource("4_1i7c2")
