@@ -13,12 +13,15 @@ class_name Jumping
 var JUMP_VELOCITY = -400.0
 var SPEED = 300.0
 var ACCELERATION = 1000.0
+var jump_time = 0.0
+var MIN_JUMP_DURATION = 0.5
 
 func enter() -> void:
 	parent.velocity.y = JUMP_VELOCITY
 	parent.jumps+=1
 	jumping_animation.play("jumping")
 	parent.rpc("send_animation","jumping")
+	jump_time = 0.0
 	
 
 func update(event: InputEvent) -> State:
@@ -33,10 +36,10 @@ func update(event: InputEvent) -> State:
 			return wallride_state		
 	return null	
 
-func autoUpdate() -> State:
+func autoUpdate() -> State:	
 	if not parent.is_on_floor() and parent.velocity.y>0:
 		return fallJump_state
-	if parent.is_on_floor():
+	if parent.is_on_floor() and (jump_time > MIN_JUMP_DURATION):
 		parent.jumps= 0
 		if parent.velocity.x != 0:
 			return moving_state
@@ -56,4 +59,6 @@ func Physics_update(delta:float) -> void:
 		parent.rpc("send_sprite",-1.5)
 	if not parent.is_on_floor():
 			parent.velocity.y += gravity * delta
+			
+	jump_time += delta 
 				

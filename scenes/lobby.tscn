@@ -90,12 +90,10 @@ size_flags_horizontal = 3
 text = "Join"
 
 [node name="Info" type="Label" parent="PanelContainer/Menus/JoinMenu"]
-visible = false
 layout_mode = 2
 
 [node name="ReadyMenu" type="VBoxContainer" parent="PanelContainer/Menus"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 
@@ -138,7 +136,6 @@ text = "Back
 
 [node name="Ready" type="Button" parent="PanelContainer/Menus/ReadyMenu/HBoxContainer2"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Ready"

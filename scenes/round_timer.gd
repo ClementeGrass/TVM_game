@@ -2,7 +2,7 @@ extends Timer
 
 @onready var round_timer = $"."
 @onready var timer_label = $TimerLabel
-var round_duration = 7
+var round_duration = 15
 var round_over = true
 
 func _ready():
@@ -51,5 +51,3 @@ func change_scene_for_all():
 			Global.point_j1 += 1
 		i += 1
 	get_tree().change_scene_to_file("res://scenes/maps/points.tscn")
-
-
