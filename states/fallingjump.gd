@@ -42,4 +42,3 @@ func Physics_update(delta:float) -> void:
 	if not parent.is_on_floor():
 			parent.velocity.y += gravity * delta
 				
-

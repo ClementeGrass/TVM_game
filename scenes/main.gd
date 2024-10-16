@@ -63,4 +63,3 @@ func assign_potato(papa: int) -> void:
 @rpc("any_peer","reliable")
 func swap_potato(_pos: int,id_:int) -> void:
 	rpc_id(id_,"set_potato_state",false)
-
