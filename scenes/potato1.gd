@@ -14,6 +14,7 @@ func _ready() -> void:
 	# Inicializa la velocidad vertical
 	velocity.y = initial_vertical_velocity
 	add_to_group("potato")
+	
 
 func setup_(speed_: int) -> void:
 	velocity.x = speed_
