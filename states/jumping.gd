@@ -11,8 +11,6 @@ class_name Jumping
 @export var state_machine: Node
 # Called when the node enters the scene tree for the first time.
 var JUMP_VELOCITY = -400.0
-var SPEED = 300.0
-var ACCELERATION = 1000.0
 var jump_time = 0.0
 var MIN_JUMP_DURATION = 0.5
 
@@ -50,7 +48,7 @@ func autoUpdate() -> State:
 
 func Physics_update(delta:float) -> void:
 	var move_input = Input.get_axis("move_left","move_right")
-	parent.velocity.x = move_toward(parent.velocity.x, SPEED* move_input, ACCELERATION * delta)
+	parent.velocity.x = move_toward(parent.velocity.x, parent.SPEED* move_input, parent.ACCELERATION * delta)
 	if parent.velocity.x>0:
 		sprite.scale.x = 1.5
 		parent.rpc("send_sprite",1.5)

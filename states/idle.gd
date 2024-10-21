@@ -7,7 +7,6 @@ extends State
 @export var crouch_state: State
 @export var idle_animation: AnimationPlayer
 @export var state_machine: Node
-var SPEED = 300.0
 var ACCELERATION = 1000.0
 
 

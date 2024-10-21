@@ -8,9 +8,7 @@ class_name FallingJump
 @export var falling_state: State
 @export var wallride_state: State
 
-var SPEED = 300.0
-var ACCELERATION = 1000.0
-
+var ACCELERATION = 1000.
 func enter():
 	fall_animation.play("jumpFall")
 	parent.rpc("send_animation","jumpFall")
@@ -32,7 +30,7 @@ func autoUpdate() -> State:
 	return null	
 func Physics_update(delta:float) -> void:
 	var move_input = Input.get_axis("move_left","move_right")
-	parent.velocity.x = move_toward(parent.velocity.x, SPEED* move_input, ACCELERATION * delta)
+	parent.velocity.x = move_toward(parent.velocity.x, parent.SPEED* move_input, parent.ACCELERATION * delta)
 	if move_input>0:
 		sprite.scale.x = 1.5
 		parent.rpc("send_sprite",1.5)
