@@ -9,13 +9,15 @@ extends CharacterBody2D
 @onready var caught_collision: CollisionShape2D = $Caught/CollisionShape2D
 @onready var state_machine = $StateMachine
 @export var potato_scene: PackedScene
+@export var burning_scene: PackedScene
 @onready var animations: AnimationPlayer = $AnimationPlayer
 @onready var timer: Timer = $Timer
+@onready var smoke_container: Node2D = $SmokeContainer
 
 
 var JUMP_VELOCITY = 400.0
 var ACCELERATION = 1000
-var SPEED = 350.0
+var SPEED = 300.0
 var jumps = 0
 var potatos = 0
 var has_potato = false
@@ -194,9 +196,16 @@ func set_potato_state(state:bool) -> void:
 	has_potato = state
 	if has_potato:
 		sprite.modulate = Color(1.0,0.5,0.5)
+		var smoking = burning_scene.instantiate()
+		smoke_container.add_child(smoking)
+		smoking.play("smoke")
 	else:
 		sprite.modulate = Color(1.0,1.0,1.0)	
 		take_potato()
+		if smoke_container.get_child_count() > 0:
+			var smoked = smoke_container.get_child(0)
+			smoked.stop()
+			smoked.queue_free()	
 	
 	
 #Function called upon when i have been stunned (caught by the player woith the potato	

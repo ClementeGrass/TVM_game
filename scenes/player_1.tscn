@@ -1,8 +1,9 @@
-[gd_scene load_steps=31 format=3 uid="uid://cwst36spixodp"]
+[gd_scene load_steps=32 format=3 uid="uid://cwst36spixodp"]
 
 [ext_resource type="Texture2D" uid="uid://bsyqjp7k5i3dq" path="res://assets/player.png" id="1_3rbwx"]
 [ext_resource type="Script" path="res://scenes/player_1.gd" id="1_eilxh"]
 [ext_resource type="PackedScene" uid="uid://bo6wcby584shn" path="res://scenes/potato.tscn" id="2_gy4wm"]
+[ext_resource type="PackedScene" uid="uid://dsisi4prtxbl8" path="res://scenes/burning.tscn" id="3_3wfpi"]
 [ext_resource type="Script" path="res://scenes/reach.gd" id="4_shymn"]
 [ext_resource type="Script" path="res://components/hurtbox.gd" id="5_bje53"]
 [ext_resource type="Script" path="res://scenes/StateMachine.gd" id="6_psiu2"]
@@ -207,6 +208,7 @@ _data = {
 collision_layer = 2
 script = ExtResource("1_eilxh")
 potato_scene = ExtResource("2_gy4wm")
+burning_scene = ExtResource("3_3wfpi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
@@ -328,3 +330,6 @@ libraries = {
 "": SubResource("AnimationLibrary_wfebw")
 }
 speed_scale = 0.5
+
+[node name="SmokeContainer" type="Node2D" parent="."]
+position = Vector2(0, -50)
