@@ -15,7 +15,7 @@ extends CharacterBody2D
 
 var JUMP_VELOCITY = 400.0
 var ACCELERATION = 1000
-var SPEED = 300.0
+var SPEED = 350.0
 var jumps = 0
 var potatos = 0
 var has_potato = false
@@ -51,8 +51,9 @@ func _input(event:InputEvent) -> void:
 	if is_multiplayer_authority():
 		state_machine.handle_inputs(event)
 		if has_potato && not state_machine.is_frozen:
-			if event.is_action_pressed("lanzar"):
+			if event.is_action_pressed("lanzar") and not has_thrown_potato:
 				throw_Potato.rpc_id(1)
+				change_speed(400)
 			if event.is_action_pressed("pintar"):
 				disable_reach.rpc_id(1, false)
 		if event.is_action_released("pintar"):
@@ -146,8 +147,6 @@ func throw_Potato() -> void:
 	if not potato_scene:
 		Debug.log("Cant throw potato")
 		return
-	if has_thrown_potato:
-		return
 			
 	var potato_inst = potato_scene.instantiate()
 	var direction = sprite.scale.x
@@ -162,18 +161,18 @@ func throw_Potato() -> void:
 	
 	potato_spawner.add_child(potato_inst, true)
 	has_thrown_potato = true  # Marcar que se ha lanzado una papa
-	SPEED = 500.0
-	ACCELERATION = 1200
 	await _ignore_potato_temporarily(0.5) # ignore por 0.5 segundos la colisiones
 	
 #Function that tells the player that they have picked up the potato they have thrown
 #Also makes sure that when i tag someone without using the potato, sets back to false has_thrown_potato
 func take_potato() -> void:
 	has_thrown_potato = false
-	SPEED = 300.0
-	ACCELERATION = 1000
+	rpc("change_speed",300.0)
 	
 	
+@rpc("any_peer","reliable")
+func change_speed(speed_):
+	SPEED = speed_	
 	
 @rpc()
 func update_sprite(frame: int) -> void:
@@ -192,12 +191,12 @@ func potato_changed(id_: int) -> void:
 		
 @rpc("any_peer", "reliable", "call_local")
 func set_potato_state(state:bool) -> void:
-	Debug.log(get_multiplayer_authority())
 	has_potato = state
 	if has_potato:
 		sprite.modulate = Color(1.0,0.5,0.5)
 	else:
 		sprite.modulate = Color(1.0,1.0,1.0)	
+		take_potato()
 	
 	
 #Function called upon when i have been stunned (caught by the player woith the potato	

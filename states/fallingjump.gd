@@ -8,7 +8,7 @@ class_name FallingJump
 @export var falling_state: State
 @export var wallride_state: State
 
-var ACCELERATION = 1000.
+var ACCELERATION = 1000
 func enter():
 	fall_animation.play("jumpFall")
 	parent.rpc("send_animation","jumpFall")
