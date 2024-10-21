@@ -24,7 +24,7 @@ func _ready():
 	
 	if is_multiplayer_authority():
 		var random_index = randi() % maps.size() 
-		var random_map = maps[random_index]
+		var random_map = maps[1]
 		rpc("change_scene_for_all", random_map)
 
 
