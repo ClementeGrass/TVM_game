@@ -289,7 +289,7 @@ shape = SubResource("RectangleShape2D_4lk75")
 script = ExtResource("6_psiu2")
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("moving_state", "jump_state", "crouch_state", "wallride_state", "emote_state", "boost_state", "idle_animation", "state_machine")]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("moving_state", "jump_state", "crouch_state", "wallride_state", "emote_state", "boost_state", "forcedown_state", "idle_animation", "state_machine")]
 script = ExtResource("7_2kw1b")
 moving_state = NodePath("../Moving")
 jump_state = NodePath("../Jumping")
@@ -297,6 +297,7 @@ crouch_state = NodePath("../Crouched")
 wallride_state = NodePath("../WallRide")
 emote_state = NodePath("../Emote")
 boost_state = NodePath("../UpBoost")
+forcedown_state = NodePath("../ForceDown")
 idle_animation = NodePath("../../AnimationPlayer")
 state_machine = NodePath("..")
 
