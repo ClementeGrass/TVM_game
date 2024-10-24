@@ -26,6 +26,7 @@ var ignore_potato: bool = false
 var player
 var pos
 var id
+var want_rematch = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 
@@ -227,4 +228,27 @@ func _ignore_potato_temporarily(duration: float) -> void:
 	ignore_potato = true
 	await get_tree().create_timer(duration).timeout
 	ignore_potato = false
-	
+
+@rpc("any_peer","reliable","call_local")
+func ready_up(ready:bool) -> void:
+	if not want_rematch:
+		want_rematch = true
+		rpc_id(1,"notify_player_ready",get_multiplayer_authority())
+		
+@rpc("call_remote","reliable")
+func notify_player_ready(id_: int) -> void:
+	if is_multiplayer_authority():
+		var all_ready = true
+		for player in Game.players:
+			var player_id = player.id
+			if player_id.scene.want_rematch == false:
+				all_ready = false
+				break
+		if all_ready:
+			get_tree().change_scene_to_file("res://scenes/main.tscn")
+			rpc("start_match_again")
+			
+@rpc("call_local","reliable")
+func start_match_again() -> void:
+		get_tree().change_scene_to_file("res://scenes/main.tscn")				
+		

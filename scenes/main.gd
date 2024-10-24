@@ -8,6 +8,7 @@ extends Node2D
 
 var player
 @export var papas = [false,false]
+var players_ready = []
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 
 var gravity = 1000
@@ -49,7 +50,7 @@ func _ready() -> void:
 			player_inst.setup(player_data,i)
 			player_inst.global_position = markers.get_child(i).global_position
 		if multiplayer.is_server():
-			await get_tree().create_timer(1).timeout
+			await get_tree().create_timer(2).timeout
 			var papa = randi() % Game.players.size()
 			assign_potato.rpc(1)
 

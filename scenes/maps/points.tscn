@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bj61qeglx5fkl"]
+[gd_scene load_steps=3 format=3 uid="uid://bj61qeglx5fkl"]
 
 [ext_resource type="Script" path="res://scenes/points.gd" id="1_56m7v"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_8nvyh"]
 
 [node name="points" type="Node2D"]
 script = ExtResource("1_56m7v")
@@ -53,3 +55,16 @@ theme_override_font_sizes/font_size = 64
 text = "TEST MEJOR DE"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="."]
+offset_left = 459.0
+offset_top = 487.0
+offset_right = 576.0
+offset_bottom = 518.0
+action_mode = 0
+text = "Rematch"
+icon = SubResource("ImageTexture_8nvyh")
+alignment = 1
+icon_alignment = 1
+
+[connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
