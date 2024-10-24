@@ -6,7 +6,7 @@ extends Node2D
 @onready var ganador = $ganador
 @onready var mejorde = $mejorde
 @onready var rematch = $CheckButton
-var max_games = 1
+var max_games = 5
 var players_ready = 0
 
 var maps = [

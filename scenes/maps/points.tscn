@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" path="res://scenes/points.gd" id="1_56m7v"]
 
-[sub_resource type="ImageTexture" id="ImageTexture_8nvyh"]
+[sub_resource type="Theme" id="Theme_26xim"]
+default_font_size = 30
 
 [node name="points" type="Node2D"]
 script = ExtResource("1_56m7v")
@@ -61,9 +62,9 @@ offset_left = 459.0
 offset_top = 487.0
 offset_right = 576.0
 offset_bottom = 518.0
+theme = SubResource("Theme_26xim")
 action_mode = 0
 text = "Rematch"
-icon = SubResource("ImageTexture_8nvyh")
 alignment = 1
 icon_alignment = 1
 

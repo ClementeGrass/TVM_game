@@ -5,6 +5,7 @@ extends State
 @export var moving_state:State
 @export var jump_state: State
 @export var crouch_state: State
+@export var wallride_state: State
 @export var idle_animation: AnimationPlayer
 @export var state_machine: Node
 var ACCELERATION = 1000.0
@@ -21,6 +22,8 @@ func enter():
 # Called when the node enters the scene tree for the first time.
 func update(event: InputEvent) -> State:
 	if event != null:
+		if parent.is_on_wall_only() and event.is_action_pressed("wall_grab"):
+			return wallride_state	
 		if event.is_action_pressed("move_right"):
 			return moving_state
 		if event.is_action_pressed("move_left"):
