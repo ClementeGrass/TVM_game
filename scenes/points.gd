@@ -43,12 +43,14 @@ func change_scene_for_all(map_path):
 		ganador.text = "JUGADOR 1 GANASTE"
 		Global.point_j1 = 0
 		Global.point_j2 = 0
+		Global.curr_round = 1
 		rematch.visible = true
 		rematch.disabled = false
 	#ugador 2 es cleinte 
 	elif Global.point_j2 == (max_games / 2 + 1):
 		Global.point_j1 = 0
 		Global.point_j2 = 0
+		Global.curr_round = 1
 		ganador.text = "JUGADOR 2 GANASTE"
 		rematch.visible = true
 		rematch.disabled = false
@@ -66,7 +68,7 @@ func update_labels():
 func _on_check_button_toggled(toggled_on):
 	rpc_id(1,"notify_rematch",toggled_on)
 
-@rpc("any_peer","reliable","call_local")
+@rpc("any_peer","call_local","reliable")
 func notify_rematch(decision:bool) -> void:
 	if decision:
 		players_ready += 1
@@ -74,9 +76,13 @@ func notify_rematch(decision:bool) -> void:
 		players_ready -= 1
 	Debug.log(players_ready)	
 	if players_ready >= Game.players.size():
-		get_tree().change_scene_to_file("res://scenes/main.tscn")
-		rpc("restart_for_all")		
+		rpc("restart_for_all")
+		ganador.text = "Iniciando otra partida..."
+		await get_tree().create_timer(3).timeout
+		get_tree().change_scene_to_file("res://scenes/main.tscn")		
 		
-@rpc("any_peer","call_local","reliable")
+@rpc("any_peer","reliable")
 func restart_for_all() -> void:
+	ganador.text = "Iniciando otra partida..."
+	await get_tree().create_timer(3).timeout
 	get_tree().change_scene_to_file("res://scenes/main.tscn")			
