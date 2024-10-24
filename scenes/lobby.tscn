@@ -111,18 +111,29 @@ layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Menus/ReadyMenu"]
 layout_mode = 2
+size_flags_stretch_ratio = 0.0
 
 [node name="RoleA" type="Button" parent="PanelContainer/Menus/ReadyMenu/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Role A"
+text = "Naranjo"
 
 [node name="RoleB" type="Button" parent="PanelContainer/Menus/ReadyMenu/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Role B"
+text = "Azul"
+
+[node name="RoleC" type="Button" parent="PanelContainer/Menus/ReadyMenu/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Verde"
+
+[node name="RoleD" type="Button" parent="PanelContainer/Menus/ReadyMenu/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Gris"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/Menus/ReadyMenu"]
 layout_mode = 2

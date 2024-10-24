@@ -14,6 +14,8 @@ var _menu_stack: Array[Control] = []
 @onready var confirm_join: Button = %ConfirmJoin
 @onready var role_a: Button = %RoleA
 @onready var role_b: Button = %RoleB
+@onready var role_c: Button = %RoleC
+@onready var role_d: Button = %RoleD
 @onready var back_ready: Button = %BackReady
 @onready var ready_toggle: Button = %Ready
 @onready var menus: MarginContainer = %Menus
@@ -52,6 +54,9 @@ func _ready():
 	
 	role_a.pressed.connect(func(): Game.set_current_player_role(Statics.Role.ROLE_A))
 	role_b.pressed.connect(func(): Game.set_current_player_role(Statics.Role.ROLE_B))
+	role_c.pressed.connect(func(): Game.set_current_player_role(Statics.Role.ROLE_C))
+	role_d.pressed.connect(func(): Game.set_current_player_role(Statics.Role.ROLE_D))
+	
 	
 	ready_toggle.pressed.connect(_on_ready_toggled)
 	
@@ -241,7 +246,7 @@ func _check_ready() -> void:
 	for player in Game.players:
 		if not player.role in roles and player.role != Statics.Role.NONE:
 			roles.push_back(player.role)
-	ready_toggle.disabled = roles.size() != Statics.Role.size() - 1
+	ready_toggle.disabled = roles.size() != Game.players.size() or Game.players.size()<2
 
 
 func _disconnect():
