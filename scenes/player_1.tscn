@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cwst36spixodp"]
+[gd_scene load_steps=34 format=3 uid="uid://cwst36spixodp"]
 
 [ext_resource type="Texture2D" uid="uid://bsyqjp7k5i3dq" path="res://assets/player.png" id="1_3rbwx"]
 [ext_resource type="Script" path="res://scenes/player_1.gd" id="1_eilxh"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://states/falling.gd" id="13_5klvh"]
 [ext_resource type="Script" path="res://states/fallingjump.gd" id="14_1roxm"]
 [ext_resource type="Script" path="res://states/wallride.gd" id="15_4yq4i"]
+[ext_resource type="Script" path="res://states/emote.gd" id="17_4srv3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6asou"]
 
@@ -190,10 +191,28 @@ tracks/0/keys = {
 "values": [36, 37]
 }
 
+[sub_resource type="Animation" id="Animation_kwuwl"]
+resource_name = "emote"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [48, 49, 50, 51, 52, 53]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wfebw"]
 _data = {
 "RESET": SubResource("Animation_wpaf6"),
 "crouch": SubResource("Animation_3qh4i"),
+"emote": SubResource("Animation_kwuwl"),
 "forceDown": SubResource("Animation_18jxr"),
 "idle": SubResource("Animation_mcamb"),
 "jumpFall": SubResource("Animation_3ssbj"),
@@ -251,22 +270,24 @@ shape = SubResource("RectangleShape2D_4lk75")
 script = ExtResource("6_psiu2")
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("moving_state", "jump_state", "crouch_state", "wallride_state", "idle_animation", "state_machine")]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("moving_state", "jump_state", "crouch_state", "wallride_state", "emote_state", "idle_animation", "state_machine")]
 script = ExtResource("7_2kw1b")
 moving_state = NodePath("../Moving")
 jump_state = NodePath("../Jumping")
 crouch_state = NodePath("../Crouched")
 wallride_state = NodePath("../WallRide")
+emote_state = NodePath("../Emote")
 idle_animation = NodePath("../../AnimationPlayer")
 state_machine = NodePath("..")
 
-[node name="Moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "jump_state", "rolling_state", "falling_state", "wallride_state", "moving_animation", "sprite")]
+[node name="Moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "jump_state", "rolling_state", "falling_state", "wallride_state", "emote_state", "moving_animation", "sprite")]
 script = ExtResource("8_xidus")
 idle_state = NodePath("../Idle")
 jump_state = NodePath("../Jumping")
 rolling_state = NodePath("../Rolling")
 falling_state = NodePath("../ForceDown")
 wallride_state = NodePath("../WallRide")
+emote_state = NodePath("../Emote")
 moving_animation = NodePath("../../AnimationPlayer")
 sprite = NodePath("../../Sprite2D")
 
@@ -322,6 +343,13 @@ jump_state = NodePath("../Jumping")
 fallingjump_state = NodePath("../FallingJump")
 wall_animation = NodePath("../../AnimationPlayer")
 sprite = NodePath("../../Sprite2D")
+
+[node name="Emote" type="Node" parent="StateMachine" node_paths=PackedStringArray("moving_state", "jump_state", "crouch_state", "emote_animation")]
+script = ExtResource("17_4srv3")
+moving_state = NodePath("../Moving")
+jump_state = NodePath("../Jumping")
+crouch_state = NodePath("../Crouched")
+emote_animation = NodePath("../../AnimationPlayer")
 
 [node name="Timer" type="Timer" parent="."]
 script = ExtResource("11_03cgj")
