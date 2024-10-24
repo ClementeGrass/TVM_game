@@ -7,6 +7,7 @@ extends State
 @export var crouch_state: State
 @export var wallride_state: State
 @export var emote_state: State
+@export var boost_state: State
 @export var idle_animation: AnimationPlayer
 @export var state_machine: Node
 var ACCELERATION = 1000.0
@@ -31,8 +32,10 @@ func update(event: InputEvent) -> State:
 			return moving_state
 		if event.is_action_pressed("jump") and parent.jumps<2:
 			return jump_state
+		if event.is_action_pressed("boost"):
+			return boost_state		
 		if event.is_action_pressed("crouch"):
-			return crouch_state	
+			return crouch_state		
 		if event.is_action_pressed("emote") and parent.is_on_floor():
 			return emote_state
 	return null

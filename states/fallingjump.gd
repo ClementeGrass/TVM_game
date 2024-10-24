@@ -7,6 +7,7 @@ class_name FallingJump
 @export var jump_state: State
 @export var falling_state: State
 @export var wallride_state: State
+@export var boost_state: State
 
 var ACCELERATION = 1000
 func enter():
@@ -17,7 +18,9 @@ func update(event:InputEvent) -> State:
 	if event != null:	
 		if event.is_action_pressed("jump") and parent.jumps<2:
 			parent.jumps+=1
-			return jump_state	
+			return jump_state
+		if event.is_action_pressed("boost") and parent.jumps<2:
+			return boost_state		
 		if event.is_action_pressed("crouch"):
 			return falling_state	
 		if parent.is_on_wall_only() and event.is_action_pressed("wall_grab"):
