@@ -34,13 +34,6 @@ var fondos = [
 ]
 
 func _ready() -> void:
-	var map_path = get_scene_file_path()
-	var index_fondo = maps.find(map_path)
-	var text = TextureRect.new()
-	text.texture = load(fondos[index_fondo][0])
-	text.scale = fondos[index_fondo][1]
-	text.z_index = -2
-	add_child(text)
 	if Game.players.size()>0:
 		for i in Game.players.size():
 			var player_data = Game.players[i]
@@ -49,8 +42,15 @@ func _ready() -> void:
 			players.add_child(player_inst)
 			player_inst.setup(player_data,i)
 			player_inst.global_position = markers.get_child(i).global_position
+		var map_path = get_scene_file_path()
+		var index_fondo = maps.find(map_path)
+		var text = TextureRect.new()
+		text.texture = load(fondos[index_fondo][0])
+		text.scale = fondos[index_fondo][1]
+		text.z_index = -2
+		add_child(text)	
 		if multiplayer.is_server():
-			await get_tree().create_timer(2).timeout
+			await get_tree().create_timer(1).timeout
 			var papa = randi() % Game.players.size()
 			assign_potato.rpc(1)
 
