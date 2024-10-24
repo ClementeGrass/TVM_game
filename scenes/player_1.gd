@@ -26,7 +26,13 @@ var ignore_potato: bool = false
 var player
 var pos
 var id
-var want_rematch = false
+var textures = [
+	preload("res://assets/player_base.png"),
+	preload("res://assets/player.png"),
+	preload("res://assets/player3.png"),
+	preload("res://assets/player4.png")
+]
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 
@@ -41,6 +47,8 @@ func setup(player_data: Statics.PlayerData,pos_:int) -> void:
 	potato_spawner.set_multiplayer_authority(1)
 	reach.id = get_multiplayer_authority()
 	id = get_multiplayer_authority()
+	sprite.texture = textures[player_data.role - 1]
+		
 
 func _ready():
 	reach_collision.disabled = true
@@ -201,7 +209,7 @@ func set_potato_state(state:bool) -> void:
 		smoke_container.add_child(smoking)
 		smoking.play("smoke")
 	else:
-		sprite.modulate = Color(1.0,1.0,1.0)	
+		sprite.modulate = Color(1.0,1.0,1.0)
 		take_potato()
 		if smoke_container.get_child_count() > 0:
 			var smoked = smoke_container.get_child(0)

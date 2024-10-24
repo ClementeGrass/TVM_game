@@ -1,9 +1,9 @@
 [gd_scene load_steps=36 format=3 uid="uid://cwst36spixodp"]
 
+[ext_resource type="Texture2D" uid="uid://bsyqjp7k5i3dq" path="res://assets/player.png" id="1_3rbwx"]
 [ext_resource type="Script" path="res://scenes/player_1.gd" id="1_eilxh"]
 [ext_resource type="PackedScene" uid="uid://bo6wcby584shn" path="res://scenes/potato.tscn" id="2_gy4wm"]
 [ext_resource type="PackedScene" uid="uid://dsisi4prtxbl8" path="res://scenes/burning.tscn" id="3_3wfpi"]
-[ext_resource type="Texture2D" uid="uid://gv47045topxf" path="res://assets/player_base.png" id="4_j5w4g"]
 [ext_resource type="Script" path="res://scenes/reach.gd" id="4_shymn"]
 [ext_resource type="Script" path="res://components/hurtbox.gd" id="5_bje53"]
 [ext_resource type="Script" path="res://scenes/StateMachine.gd" id="6_psiu2"]
@@ -255,7 +255,7 @@ shape = SubResource("RectangleShape2D_6asou")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(1.5, 1.584)
-texture = ExtResource("4_j5w4g")
+texture = ExtResource("1_3rbwx")
 hframes = 6
 vframes = 12
 frame = 6
