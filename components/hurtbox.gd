@@ -18,7 +18,9 @@ func _on_area_entered(area: Area2D) -> void:
 		if parent == null:
 			return
 	
-	var hitbox = parent.get_node("Hitbox") as Hitbox 
+	var hitbox = null
+	if parent.has_node("Hitbox"):
+		hitbox = parent.get_node("Hitbox") as Hitbox 
 	if hitbox == null:
 		parent = area as Hitbox
 		if parent == null:
