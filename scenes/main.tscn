@@ -23,10 +23,16 @@ player_scene = ExtResource("2_e4qbi")
 [node name="Markers" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="Markers"]
-position = Vector2(200, 400)
+position = Vector2(238, 634)
 
 [node name="Marker2D2" type="Marker2D" parent="Markers"]
 position = Vector2(700, 400)
+
+[node name="Marker2D3" type="Marker2D" parent="Markers"]
+position = Vector2(807, 111)
+
+[node name="Marker2D4" type="Marker2D" parent="Markers"]
+position = Vector2(198, 152)
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2(2, 2)

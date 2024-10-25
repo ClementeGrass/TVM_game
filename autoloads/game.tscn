@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6cfq0qe7ynw6"]
+[gd_scene load_steps=6 format=3 uid="uid://b6cfq0qe7ynw6"]
 
 [ext_resource type="Script" path="res://autoloads/game.gd" id="1_fmbhi"]
 [ext_resource type="Script" path="res://scripts/player_data_resource.gd" id="2_xaonh"]
@@ -13,10 +13,15 @@ script = ExtResource("2_xaonh")
 name = "client"
 role = 2
 
+[sub_resource type="Resource" id="Resource_u66cn"]
+script = ExtResource("2_xaonh")
+name = "client2"
+role = 3
+
 [node name="Game" type="Node"]
 script = ExtResource("1_fmbhi")
 multiplayer_test = true
-test_players = Array[ExtResource("2_xaonh")]([SubResource("Resource_8varw"), SubResource("Resource_xt1vb")])
+test_players = Array[ExtResource("2_xaonh")]([SubResource("Resource_8varw"), SubResource("Resource_xt1vb"), SubResource("Resource_u66cn")])
 
 [node name="PlayerId" type="Label" parent="."]
 anchors_preset = 1

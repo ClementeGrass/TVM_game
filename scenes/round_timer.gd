@@ -38,16 +38,12 @@ func end_round():
 
 @rpc("call_local", "reliable")
 func change_scene_for_all():
-	var players = get_tree().current_scene.get_node("Players").get_children()
 	#PARA SISTEMA DE DOS JUGADORES SOLAMENTE
-	var i = 1
+	var players = get_tree().current_scene.get_node("Players").get_children()
+	var i = 0
 	for player in players:
-		print(player.has_potato)
-		#Server tiene potato
-		if i == 1 and player.has_potato:
-			Global.point_j2 += 1
-		#Cliente tiene potato
-		if i == 2 and player.has_potato:
-			Global.point_j1 += 1
-		i += 1
+		#Le sumo los puntos a los jugadores que no tienen la papa y no están de spectators
+		if not player.has_potato and not player.spectator:
+			Global.points_for_player[i] += 1
+		i += 1		
 	get_tree().change_scene_to_file("res://scenes/maps/points.tscn")

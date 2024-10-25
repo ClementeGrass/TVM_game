@@ -40,8 +40,13 @@ func _ready() -> void:
 			var player_inst = player_scene.instantiate()
 			player_data.scene = player_inst
 			players.add_child(player_inst)
-			player_inst.setup(player_data,i)
-			player_inst.global_position = markers.get_child(i).global_position
+			#Si esta en winners, es porque debe poder jugar la próxima ronda
+			if i in Global.winners:
+				player_inst.setup(player_data,i,false)
+			#Si no está, es porque debe ser espectador para la ronda final	
+			else:
+				player_inst.setup(player_data,i,true)	
+			player_inst.global_position = markers.get_child(i).global_position	
 		var map_path = get_scene_file_path()
 		var index_fondo = maps.find(map_path)
 		var text = TextureRect.new()
@@ -51,9 +56,16 @@ func _ready() -> void:
 		add_child(text)	
 		if multiplayer.is_server():
 			await get_tree().create_timer(1).timeout
-			var papa = randi() % Game.players.size()
-			assign_potato.rpc(1)
+			var papa = 0
+			#Acá me debo asegurar de entregarle la papa a alguien que no sea espectador
+			while true:
+				papa = randi() % Game.players.size()
+				print(papa)
+				if papa in Global.winners:
+					break
+			assign_potato.rpc(papa)
 
+#RPC function in charge of assigning the potato when the game starts
 @rpc("call_local", "reliable")
 func assign_potato(papa: int) -> void:
 	if papa < players.get_child_count():

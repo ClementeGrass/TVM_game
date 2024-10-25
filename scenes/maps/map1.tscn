@@ -23,6 +23,12 @@ position = Vector2(320, 529)
 [node name="Marker2D2" type="Marker2D" parent="Markers"]
 position = Vector2(661, 417)
 
+[node name="Marker2D3" type="Marker2D" parent="Markers"]
+position = Vector2(302, 86)
+
+[node name="Marker2D4" type="Marker2D" parent="Markers"]
+position = Vector2(926, 138)
+
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2(2, 2)
 tile_set = ExtResource("3_ikg4k")

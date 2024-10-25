@@ -226,10 +226,20 @@ func set_player_ready(id: int, value: bool):
 func starting_game(value: bool):
 	role_a.disabled = value
 	role_b.disabled = value
+	role_c.disabled = value
+	role_d.disabled = value
 	back_ready.disabled = value
 	time_container.visible = value
 	if value:
 		start_timer.start()
+		var pos = 0
+		#Inicializo las variables globales con las que manejo la victoria y los revanchas
+		for i in Game.players:
+			Global.points_for_player.push_back(0)
+			Global.names_for_player.push_back("")
+			Global.rematch_for_player.push_back(false)
+			Global.winners.push_back(pos)
+			pos += 1
 	else:
 		start_timer.stop()
 
@@ -263,6 +273,7 @@ func _disconnect():
 
 func _on_start_timer_timeout() -> void:
 	if multiplayer.is_server():
+		print(Global.points_for_player.size())	
 		start_game.rpc()
 
 

@@ -10,3 +10,8 @@ var has_potato = null
 var rematch_j1 = false
 var rematch_j2 = false
 
+var points_for_player = []
+var names_for_player = []
+var rematch_for_player = []
+var winners = []
+

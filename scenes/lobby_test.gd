@@ -66,4 +66,12 @@ func _on_start_game_timeout() -> void:
 
 @rpc("reliable", "call_local")
 func start_game() -> void:
+	var pos = 0
+#Inicializo las variables globales con las que manejo la victoria y los revanchas
+	for i in Game.players:
+		Global.points_for_player.push_back(0)
+		Global.names_for_player.push_back("")
+		Global.rematch_for_player.push_back(false)
+		Global.winners.push_back(pos)
+		pos += 1
 	get_tree().change_scene_to_file("res://scenes/main.tscn")

@@ -32,6 +32,7 @@ var textures = [
 	preload("res://assets/player3.png"),
 	preload("res://assets/player4.png")
 ]
+var spectator = false
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -41,13 +42,20 @@ var gravity = 1000
 #Function setup creates players with correct values
 #Sets their multiplayer authority, as well as the ids to use for rpcs
 
-func setup(player_data: Statics.PlayerData,pos_:int) -> void:
+func setup(player_data: Statics.PlayerData,pos_:int,spectate:bool) -> void:
 	name = str(player_data.id)
 	set_multiplayer_authority(player_data.id)
 	potato_spawner.set_multiplayer_authority(1)
 	reach.id = get_multiplayer_authority()
 	id = get_multiplayer_authority()
 	sprite.texture = textures[player_data.role - 1]
+	#Si es espectador, desactivo su hitbox y hurtbox, para no recibir la papa
+	#También le cambió la opacidad, para que parezca fantasma
+	if spectate:
+		spectator = spectate
+		reach_collision.set_deferred("disabled", true)
+		caught_collision.set_deferred("disabled",true)
+		sprite.modulate.a = 0.5
 		
 
 func _ready():
@@ -69,6 +77,24 @@ func _input(event:InputEvent) -> void:
 				disable_reach.rpc_id(1, false)
 		if event.is_action_released("pintar"):
 			disable_reach.rpc_id(1, true)
+				
+
+func _process(delta) -> void:
+	if is_multiplayer_authority():
+		state_machine.handle_animations()	
+					
+
+func _physics_process(delta: float) -> void:
+	if is_multiplayer_authority():
+		state_machine.handle_physics(delta) 
+		move_and_slide()
+		send_position.rpc(position,velocity)		
+		
+#RPC function that sends my current position to the other players	
+@rpc()
+func send_position(pos:Vector2, vel: Vector2) -> void:
+	position = lerp(position,pos,0.5)
+	velocity = lerp(velocity,vel,0.5)			
 			
 #RPC function in charge of controling when a player´s reach is disabled or not
 
@@ -114,18 +140,6 @@ func change_actual_shape(shape:int) -> void:
 		caught_collision.shape = RectangleShape2D.new()
 		
 		
-
-func _process(delta) -> void:
-	if is_multiplayer_authority():
-		state_machine.handle_animations()	
-					
-
-func _physics_process(delta: float) -> void:
-	if is_multiplayer_authority():
-		state_machine.handle_physics(delta) 
-		move_and_slide()
-		send_position.rpc(position,velocity)
-		
 			
 #RPC funciton that plays the animation according to what state the player is currently in
 			
@@ -144,11 +158,16 @@ func stop_animation() -> void:
 func send_sprite(scale: float) -> void:
 	sprite.scale.x = scale
 	
-#RPC function that sends my current position to the other players	
+	
+	
+@rpc("any_peer","reliable")
+func change_speed(speed_):
+	SPEED = speed_	
+	
 @rpc()
-func send_position(pos:Vector2, vel: Vector2) -> void:
-	position = lerp(position,pos,0.5)
-	velocity = lerp(velocity,vel,0.5)
+func update_sprite(frame: int) -> void:
+	sprite.frame = frame
+	
 	
 	
 #Function in charge of creating and throwing the potato
@@ -173,23 +192,19 @@ func throw_Potato() -> void:
 	potato_spawner.add_child(potato_inst, true)
 	has_thrown_potato = true  # Marcar que se ha lanzado una papa
 	await _ignore_potato_temporarily(0.5) # ignore por 0.5 segundos la colisiones
-	
+
+# Función para ignorar la papa temporalmente después de lanzarla
+func _ignore_potato_temporarily(duration: float) -> void:
+	ignore_potato = true
+	await get_tree().create_timer(duration).timeout
+	ignore_potato = false
+		
 #Function that tells the player that they have picked up the potato they have thrown
 #Also makes sure that when i tag someone without using the potato, sets back to false has_thrown_potato
 func take_potato() -> void:
 	has_thrown_potato = false
 	rpc("change_speed",300.0)
 	
-	
-@rpc("any_peer","reliable")
-func change_speed(speed_):
-	SPEED = speed_	
-	
-@rpc()
-func update_sprite(frame: int) -> void:
-	sprite.frame = frame
-
-
 #Function that tells the players that the potato has been passed to someone else
 #As well as changing my one potato_state, makes sure to change the other player´s potato_state
 func potato_changed(id_: int) -> void:
@@ -215,7 +230,7 @@ func set_potato_state(state:bool) -> void:
 			var smoked = smoke_container.get_child(0)
 			smoked.stop()
 			smoked.queue_free()	
-	
+		
 	
 #Function called upon when i have been stunned (caught by the player woith the potato	
 func stun() -> void:
@@ -231,9 +246,4 @@ func notify_stun() -> void:
 	state_machine.change_state(state_machine.current_state,state_machine.states["stunned"])
 	timer.start()
 	
-# Función para ignorar la papa temporalmente después de lanzarla
-func _ignore_potato_temporarily(duration: float) -> void:
-	ignore_potato = true
-	await get_tree().create_timer(duration).timeout
-	ignore_potato = false
 

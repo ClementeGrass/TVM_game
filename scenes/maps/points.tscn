@@ -18,26 +18,6 @@ text = "TEST RONDAS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="pj1" type="Label" parent="."]
-offset_left = 106.0
-offset_top = 236.0
-offset_right = 469.0
-offset_bottom = 473.0
-theme_override_font_sizes/font_size = 64
-text = "TEST PJ1"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="pj2" type="Label" parent="."]
-offset_left = 528.0
-offset_top = 251.0
-offset_right = 898.0
-offset_bottom = 461.0
-theme_override_font_sizes/font_size = 64
-text = "TEST PJ2"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="ganador" type="Label" parent="."]
 offset_left = 32.0
 offset_top = 186.0
@@ -67,5 +47,11 @@ action_mode = 0
 text = "Rematch"
 alignment = 1
 icon_alignment = 1
+
+[node name="PlayerContainer" type="VBoxContainer" parent="."]
+offset_left = 250.0
+offset_top = 15.0
+offset_right = 750.0
+offset_bottom = 415.0
 
 [connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]

@@ -1,12 +1,11 @@
 extends Node2D
 
 @onready var curr_round = $ronda
-@onready var pj1 = $pj1
-@onready var pj2 = $pj2
 @onready var ganador = $ganador
 @onready var mejorde = $mejorde
 @onready var rematch = $CheckButton
-var max_games = 5
+@onready var player_container = $PlayerContainer
+var max_games = 1
 var players_ready = 0
 
 var maps = [
@@ -34,34 +33,55 @@ func _ready():
 
 @rpc("call_local", "reliable")
 func change_scene_for_all(map_path):
-	pj1.text = ""
-	pj2.text = ""
 	curr_round.text = ""
 	mejorde.text = ""
-	#jugador 1 es server 
-	if Global.point_j1 == (max_games / 2 + 1):
-		ganador.text = "JUGADOR 1 GANASTE"
-		Global.point_j1 = 0
-		Global.point_j2 = 0
-		Global.curr_round = 1
-		rematch.visible = true
-		rematch.disabled = false
-	#ugador 2 es cleinte 
-	elif Global.point_j2 == (max_games / 2 + 1):
-		Global.point_j1 = 0
-		Global.point_j2 = 0
-		Global.curr_round = 1
-		ganador.text = "JUGADOR 2 GANASTE"
-		rematch.visible = true
-		rematch.disabled = false
-	else:
+	var continue_ = true
+	Global.winners = []
+	#Aquí reviso cuantos jugadores ya han igualado o superado la cantidad de victorias necesarias
+	for i in range(Global.points_for_player.size()):
+		if Global.points_for_player[i] >=(max_games):
+			continue_ = false
+			Global.winners.push_back(i)
+			var cur_max = Global.points_for_player[Global.winners[0]]
+			#Si el que agregue, tiene menos rondas ganadas que algiuen aquí, lo saco
+			if cur_max > Global.points_for_player[i]:
+				Global.winners.pop_back()
+			#Si el que recien agregue es el que más rondas ganó, saco todo el resto y dejo al que agregue	
+			elif cur_max< Global.points_for_player[i]:
+				Global.winners = [i]	
+	#Si nadie ha ganado aún			
+	if continue_:
+		#Agrego todos a la lista de ganadores, para que todos jueguen la próxima ronda
+		for i in range(Global.points_for_player.size()):
+			Global.winners.push_back(i)
 		get_tree().change_scene_to_file(map_path)
-	
+	else:
+		#Si hay más de un ganador, se envía a una última partida que decide todo
+		if Global.winners.size() != 1:
+			get_tree().change_scene_to_file(map_path)
+		#Si hay solo un ganador, muestra pantalla final	
+		else:		
+			ganador.text = str(Game.players[Global.winners[0]].name) + " GANASTE"
+			Global.curr_round = 1
+			Global.winners = []
+			for i in range(Game.players.size()):
+				Global.points_for_player[i] = 0
+				Global.winners.push_back(i)
+				var label_player = player_container.get_child(i)
+				label_player.text = ""
+			rematch.visible = true
+			rematch.disabled = false
+			
 func update_labels():
-	pj1.text = str(Global.point_j1)
-	pj2.text = str(Global.point_j2)
-	curr_round.text = "Ronda " + str(Global.curr_round) + "/" + str(max_games)
-	mejorde.text = "Mejor de " + str(max_games / 2 + 1)
+	if Game.players.size()>0:
+		var i = 0
+		for player in Game.players:
+			var new_label = Label.new()
+			new_label.text = player.name + ":" + str(Global.points_for_player[i])
+			player_container.add_child(new_label)
+			i+=1
+		curr_round.text = "Ronda " + str(Global.curr_round)
+		mejorde.text = "Hasta " + str(max_games) + " victorias"
 
 
 
@@ -77,12 +97,17 @@ func notify_rematch(decision:bool) -> void:
 	Debug.log(players_ready)	
 	if players_ready >= Game.players.size():
 		rpc("restart_for_all")
-		ganador.text = "Iniciando otra partida..."
+		ganador.text = "Iniciando otra partida"
 		await get_tree().create_timer(3).timeout
 		get_tree().change_scene_to_file("res://scenes/main.tscn")		
 		
 @rpc("any_peer","reliable")
 func restart_for_all() -> void:
-	ganador.text = "Iniciando otra partida..."
+	ganador.text = "Iniciando otra partida"
 	await get_tree().create_timer(3).timeout
-	get_tree().change_scene_to_file("res://scenes/main.tscn")			
+	get_tree().change_scene_to_file("res://scenes/main.tscn")		
+	
+@rpc("any_peer","reliable")
+func change_final_scene(final_map: String) -> void:
+	get_tree().change_scene_to_file(final_map)
+			
