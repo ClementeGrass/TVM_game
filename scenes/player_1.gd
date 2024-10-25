@@ -30,7 +30,7 @@ var textures = [
 	preload("res://assets/player_base.png"),
 	preload("res://assets/player.png"),
 	preload("res://assets/player3.png"),
-	preload("res://assets/player4.png")
+	preload("res://assets/player2.png")
 ]
 var spectator = false
 

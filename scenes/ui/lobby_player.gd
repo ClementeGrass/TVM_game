@@ -44,7 +44,7 @@ func _set_player_role(value: Statics.Role) -> void:
 		Statics.Role.ROLE_C:
 			player_role.text = "Verde"	
 		Statics.Role.ROLE_D:
-			player_role.text = "Gris"	
+			player_role.text = "Rosado"	
 
 
 func set_ready(value: bool) -> void:
