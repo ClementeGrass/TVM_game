@@ -1,14 +1,65 @@
-[gd_scene load_steps=6 format=3 uid="uid://bslhrv3eo36wd"]
+[gd_scene load_steps=14 format=3 uid="uid://bslhrv3eo36wd"]
 
 [ext_resource type="Script" path="res://scenes/lobby.gd" id="1_g2fmt"]
 [ext_resource type="PackedScene" uid="uid://chbh4lxk8rmmd" path="res://scenes/ui/lobby_player.tscn" id="2_060bj"]
 [ext_resource type="Texture2D" uid="uid://bfhs2qgj8vaol" path="res://assets/new_compressed_texture_2d.tres" id="3_gqi1y"]
 [ext_resource type="Texture2D" uid="uid://wscmxr8cgkqx" path="res://assets/Free_pixel_food_16x16/Icons/vegetable_potato.png" id="4_1i7c2"]
+[ext_resource type="Texture2D" uid="uid://gv47045topxf" path="res://assets/player_base.png" id="5_pwiyn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_njb2f"]
 font_size = 50
 font_color = Color(0.530636, 0.398566, 0.0169074, 1)
 outline_size = 5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_youoo"]
+atlas = ExtResource("5_pwiyn")
+region = Rect2(0, 32, 33, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yr15i"]
+atlas = ExtResource("5_pwiyn")
+region = Rect2(33, 32, 33, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0nq3"]
+atlas = ExtResource("5_pwiyn")
+region = Rect2(66, 32, 33, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2m00"]
+atlas = ExtResource("5_pwiyn")
+region = Rect2(99, 32, 33, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58h4d"]
+atlas = ExtResource("5_pwiyn")
+region = Rect2(132, 32, 33, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pldc"]
+atlas = ExtResource("5_pwiyn")
+region = Rect2(165, 32, 33, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bhxri"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_youoo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yr15i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0nq3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2m00")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58h4d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5pldc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Lobby" type="MarginContainer"]
 anchors_preset = 15
@@ -191,3 +242,8 @@ position = Vector2(250, 300)
 rotation = 3.14159
 scale = Vector2(10, 10)
 texture = ExtResource("4_1i7c2")
+
+[node name="Fox" type="AnimatedSprite2D" parent="."]
+position = Vector2(510, 500)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_bhxri")

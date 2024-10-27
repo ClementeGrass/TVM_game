@@ -28,6 +28,7 @@ var _menu_stack: Array[Control] = []
 @onready var time: Label = %Time
 @onready var potato1: Sprite2D =$VegetablePotato
 @onready var potato2: Sprite2D = $VegetablePotato2
+@onready var fox: AnimatedSprite2D = $Fox
 
 
 func _ready():
@@ -51,6 +52,8 @@ func _ready():
 	
 	back_join.pressed.connect(_back_menu)
 	back_ready.pressed.connect(_back_menu)
+	
+	fox.play("default")
 	
 	role_a.pressed.connect(func(): Game.set_current_player_role(Statics.Role.ROLE_A))
 	role_b.pressed.connect(func(): Game.set_current_player_role(Statics.Role.ROLE_B))
