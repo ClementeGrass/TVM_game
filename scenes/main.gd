@@ -33,6 +33,8 @@ var fondos = [
 	["res://assets/OldDungeon.png",Vector2(0.54,0.8)],
 ]
 
+#Ready function to initialize players that will participate in the next round
+
 func _ready() -> void:
 	if Game.players.size()>0:
 		for i in Game.players.size():
@@ -47,6 +49,7 @@ func _ready() -> void:
 			else:
 				player_inst.setup(player_data,i,true)	
 			player_inst.global_position = markers.get_child(i).global_position	
+		#Aquí, se carga el fondo para el mapa en el que están	
 		var map_path = get_scene_file_path()
 		var index_fondo = maps.find(map_path)
 		var text = TextureRect.new()
@@ -72,7 +75,3 @@ func assign_potato(papa: int) -> void:
 		var player = players.get_child(papa)
 		player.set_potato_state(true)
 
-
-@rpc("any_peer","reliable")
-func swap_potato(_pos: int,id_:int) -> void:
-	rpc_id(id_,"set_potato_state",false)

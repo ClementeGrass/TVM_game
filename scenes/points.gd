@@ -17,12 +17,14 @@ var maps = [
 	"res://scenes/maps/map5.tscn"
 ]
 
+#Ready function that updates the labels and waits to change to the next round
 func _ready():
 	update_labels()
 	rematch.visible = false
 	rematch.disabled = true
 		
 	Global.curr_round += 1
+	#Timer to allow players to see for 5 seconds the points reached after the round
 	await get_tree().create_timer(5).timeout
 	
 	if is_multiplayer_authority():
@@ -31,6 +33,7 @@ func _ready():
 		rpc("change_scene_for_all", random_map)
 
 
+#RPC funciton that changes the scene if another round is needed
 @rpc("call_local", "reliable")
 func change_scene_for_all(map_path):
 	curr_round.text = ""
@@ -71,7 +74,8 @@ func change_scene_for_all(map_path):
 				label_player.text = ""
 			rematch.visible = true
 			rematch.disabled = false
-			
+		
+#Function in charge of updating the labels with the latest score			
 func update_labels():
 	if Game.players.size()>0:
 		var i = 0
@@ -84,29 +88,34 @@ func update_labels():
 		mejorde.text = "Hasta " + str(max_games) + " victorias"
 
 
-
+#Function that checks if the rematch button has been pressed
 func _on_check_button_toggled(toggled_on):
 	rpc_id(1,"notify_rematch",toggled_on)
 
+#RPC function that notifies the server if someone has chosen to rematch
 @rpc("any_peer","call_local","reliable")
 func notify_rematch(decision:bool) -> void:
+	#Aquí revisa si el jugador eligió apretar o no el botón
 	if decision:
 		players_ready += 1
 	else:
 		players_ready -= 1
-	Debug.log(players_ready)	
+	#Aquí revisa si todos quieren jugar otra partida	
 	if players_ready >= Game.players.size():
+		#Si todos quieren, se reinicia la partida
 		rpc("restart_for_all")
 		ganador.text = "Iniciando otra partida"
 		await get_tree().create_timer(3).timeout
 		get_tree().change_scene_to_file("res://scenes/main.tscn")		
-		
+	
+#RPC funciton in charge of restarting the game for everyone		
 @rpc("any_peer","reliable")
 func restart_for_all() -> void:
 	ganador.text = "Iniciando otra partida"
 	await get_tree().create_timer(3).timeout
 	get_tree().change_scene_to_file("res://scenes/main.tscn")		
 	
+#RPC funciton that changes the scene to the final round	
 @rpc("any_peer","reliable")
 func change_final_scene(final_map: String) -> void:
 	get_tree().change_scene_to_file(final_map)
