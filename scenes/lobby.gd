@@ -29,6 +29,9 @@ var _menu_stack: Array[Control] = []
 @onready var potato1: Sprite2D =$VegetablePotato
 @onready var potato2: Sprite2D = $VegetablePotato2
 @onready var fox: AnimatedSprite2D = $Fox
+@onready var fox_blue: AnimatedSprite2D = $FoxBlue
+@onready var fox_green: AnimatedSprite2D = $FoxGreen
+@onready var fox_pink: AnimatedSprite2D = $FoxPink
 
 
 func _ready():
@@ -54,6 +57,9 @@ func _ready():
 	back_ready.pressed.connect(_back_menu)
 	
 	fox.play("default")
+	fox_blue.play("default")
+	fox_green.play("default")
+	fox_pink.play("default")
 	
 	role_a.pressed.connect(func(): Game.set_current_player_role(Statics.Role.ROLE_A))
 	role_b.pressed.connect(func(): Game.set_current_player_role(Statics.Role.ROLE_B))
