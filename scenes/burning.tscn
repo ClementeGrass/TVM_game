@@ -1,58 +1,58 @@
 [gd_scene load_steps=10 format=3 uid="uid://dsisi4prtxbl8"]
 
-[ext_resource type="Texture2D" uid="uid://klvfcspkmnvn" path="res://assets/FX045-SpriteSheet.png" id="1_50877"]
+[ext_resource type="Texture2D" uid="uid://klvfcspkmnvn" path="res://assets/Extras/FX045-SpriteSheet.png" id="1_ycjkc"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rdw2h"]
-atlas = ExtResource("1_50877")
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5gq0"]
+atlas = ExtResource("1_ycjkc")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v5v87"]
-atlas = ExtResource("1_50877")
+[sub_resource type="AtlasTexture" id="AtlasTexture_oegug"]
+atlas = ExtResource("1_ycjkc")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q476b"]
-atlas = ExtResource("1_50877")
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqmnu"]
+atlas = ExtResource("1_ycjkc")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6ivyr"]
-atlas = ExtResource("1_50877")
+[sub_resource type="AtlasTexture" id="AtlasTexture_gketb"]
+atlas = ExtResource("1_ycjkc")
 region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ik3aa"]
-atlas = ExtResource("1_50877")
+[sub_resource type="AtlasTexture" id="AtlasTexture_332ej"]
+atlas = ExtResource("1_ycjkc")
 region = Rect2(128, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_27n2f"]
-atlas = ExtResource("1_50877")
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxadb"]
+atlas = ExtResource("1_ycjkc")
 region = Rect2(160, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c4eec"]
-atlas = ExtResource("1_50877")
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gkac"]
+atlas = ExtResource("1_ycjkc")
 region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_drl83"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rdw2h")
+"texture": SubResource("AtlasTexture_r5gq0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v5v87")
+"texture": SubResource("AtlasTexture_oegug")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q476b")
+"texture": SubResource("AtlasTexture_wqmnu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6ivyr")
+"texture": SubResource("AtlasTexture_gketb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ik3aa")
+"texture": SubResource("AtlasTexture_332ej")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_27n2f")
+"texture": SubResource("AtlasTexture_kxadb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c4eec")
+"texture": SubResource("AtlasTexture_7gkac")
 }],
 "loop": true,
 "name": &"smoke",

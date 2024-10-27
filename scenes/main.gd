@@ -25,12 +25,12 @@ var maps = [
 var curr_map = "res://scenes/main.tscn"
 
 var fondos = [
-	["res://assets/forest2.png",Vector2(1,1)],
-	["res://assets/midnight.png",Vector2(5,5)],
-	["res://assets/dark.png", Vector2(1.5,1.5)],
-	["res://assets/mountains.png",Vector2(2,2.75)],
-	["res://assets/sky.png",Vector2(0.75,1.5)],
-	["res://assets/OldDungeon.png",Vector2(0.54,0.8)],
+	["res://assets/FondoMapas/forest2.png",Vector2(1,1)],
+	["res://assets/FondoMapas/midnight.png",Vector2(5,5)],
+	["res://assets/FondoMapas/dark.png", Vector2(1.5,1.5)],
+	["res://assets/FondoMapas/mountains.png",Vector2(2,2.75)],
+	["res://assets/FondoMapas/sky.png",Vector2(0.75,1.5)],
+	["res://assets/FondoMapas/OldDungeon.png",Vector2(0.54,0.8)],
 ]
 
 #Ready function to initialize players that will participate in the next round

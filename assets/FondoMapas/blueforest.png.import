@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dijso8hin63yn"
-path="res://.godot/imported/redforest.png-91fbf7cadfc7f9b67c7099ac63292610.ctex"
+uid="uid://b3mn2g4vfdsi0"
+path="res://.godot/imported/blueforest.png-f2971312d6635658a7717dbd9856c2bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/redforest.png"
-dest_files=["res://.godot/imported/redforest.png-91fbf7cadfc7f9b67c7099ac63292610.ctex"]
+source_file="res://assets/FondoMapas/blueforest.png"
+dest_files=["res://.godot/imported/blueforest.png-f2971312d6635658a7717dbd9856c2bd.ctex"]
 
 [params]
 

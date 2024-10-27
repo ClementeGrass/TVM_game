@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nuanyiwwc6hh"
-path="res://.godot/imported/OldDungeon.png-29c77a76059c30e4718dfcaad132baff.ctex"
+uid="uid://cbv5gq3loigya"
+path="res://.godot/imported/forest.png-7ee0d0d4f0c18958a1982bab41dc6d4d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/OldDungeon.png"
-dest_files=["res://.godot/imported/OldDungeon.png-29c77a76059c30e4718dfcaad132baff.ctex"]
+source_file="res://assets/FondoMapas/forest.png"
+dest_files=["res://.godot/imported/forest.png-7ee0d0d4f0c18958a1982bab41dc6d4d.ctex"]
 
 [params]
 

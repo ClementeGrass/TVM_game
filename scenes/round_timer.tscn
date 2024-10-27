@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://e5djqciko56p"]
 
 [ext_resource type="Script" path="res://scenes/round_timer.gd" id="1_vp3td"]
-[ext_resource type="Texture2D" uid="uid://df782qylnr2ls" path="res://assets/Clock.png" id="2_a518g"]
+[ext_resource type="Texture2D" uid="uid://df782qylnr2ls" path="res://assets/Extras/Clock.png" id="2_1s4mt"]
 
 [node name="RoundTimer" type="Timer"]
 wait_time = 60.0
@@ -17,7 +17,7 @@ offset_bottom = 63.0
 [node name="Clock" type="Sprite2D" parent="."]
 position = Vector2(512, 25)
 scale = Vector2(0.025, 0.025)
-texture = ExtResource("2_a518g")
+texture = ExtResource("2_1s4mt")
 
 [node name="Label" type="Label" parent="Clock"]
 offset_left = -275.0
