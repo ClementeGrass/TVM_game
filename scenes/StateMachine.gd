@@ -20,6 +20,7 @@ func handle_physics(delta):
 	if current_state:
 		current_state.Physics_update(delta)			
 		
+#Function where the state machine handles player inputs		
 func handle_inputs(event):
 	var new_state = null
 	new_state = current_state.update(event)	
@@ -28,6 +29,7 @@ func handle_inputs(event):
 	if new_state != current_state && new_state:
 		change_state(current_state, new_state)
 
+#Fucntion where the state mahcine handles changes not necesarrily donde by inputs
 func handle_animations():
 	var new_state = current_state.autoUpdate()
 	if is_frozen:
@@ -35,6 +37,7 @@ func handle_animations():
 	if new_state != current_state && new_state:
 		change_state(current_state, new_state)	
 		
+#Function in charge of changing the current state of the player		
 func change_state(state, new_state):
 	if state != current_state:
 		return

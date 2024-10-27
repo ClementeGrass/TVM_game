@@ -1,7 +1,7 @@
 extends Timer
 
 @onready var round_timer = $"."
-@onready var timer_label = $TimerLabel
+@onready var timer_label = $Clock/Label
 var round_duration = 20
 var round_over = true
 

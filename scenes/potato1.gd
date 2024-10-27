@@ -23,10 +23,6 @@ func _physics_process(delta: float) -> void:
 	if abs(velocity.x) > 0.1:
 		var direccion = velocity.x/abs(velocity.x)
 		velocity.x -= delta*direccion*roce
-	#rotation += delta  # O cualquier otra lógica para rotar
-	
-	# Hacer que el Sprite siga la rotación
-	#sprite.rotation = rotation  # Sincroniza la rotación del Sprite
 	velocity.y += gravity * delta
 	linear_velocity = velocity
 	
