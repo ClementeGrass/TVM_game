@@ -185,12 +185,15 @@ func throw_Potato() -> void:
 	potato_inst.global_position = global_position
 	potato_inst.global_rotation = global_rotation
 	potato_inst.id = get_multiplayer_authority()	
+	Debug.log(potato_inst.id)
 	# Añadir lógica de colisiones: el jugador que lanza no colisiona con la papa
 	potato_inst.collision_layer = 0
 	potato_inst.collision_mask = ~(1 << self.collision_layer)  # Desactivar colisión con el jugador que la lanza
 	
 	potato_spawner.add_child(potato_inst, true)
-	has_thrown_potato = true  # Marcar que se ha lanzado una papa
+	rpc_id(potato_inst.id,"potato_been_thrown", true)
+	has_thrown_potato = true
+	#has_thrown_potato = true  # Marcar que se ha lanzado una papa
 	await _ignore_potato_temporarily(0.5) # ignore por 0.5 segundos la colisiones
 
 # Función para ignorar la papa temporalmente después de lanzarla
@@ -198,12 +201,17 @@ func _ignore_potato_temporarily(duration: float) -> void:
 	ignore_potato = true
 	await get_tree().create_timer(duration).timeout
 	ignore_potato = false
+	
+@rpc("any_peer","reliable")	
+func potato_been_thrown(thrown: bool) -> void:
+	has_thrown_potato = thrown
 		
 #Function that tells the player that they have picked up the potato they have thrown
 #Also makes sure that when i tag someone without using the potato, sets back to false has_thrown_potato
 func take_potato() -> void:
+	rpc("potato_been_thrown",false)
 	has_thrown_potato = false
-	rpc("change_speed",300.0)
+	rpc_id(1,"change_speed",300.0)
 	
 #Function that tells the players that the potato has been passed to someone else
 #As well as changing my one potato_state, makes sure to change the other player´s potato_state

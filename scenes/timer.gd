@@ -11,5 +11,4 @@ func _ready():
 
 
 func _on_Timer_timeout() -> void:
-	Debug.log("bua")
 	state_machine.is_frozen = false

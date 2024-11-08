@@ -22,7 +22,7 @@ func setup_(speed_: int) -> void:
 func _physics_process(delta: float) -> void:
 	if abs(velocity.x) > 0.1:
 		var direccion = velocity.x/abs(velocity.x)
-		velocity.x -= delta*direccion*roce
+		velocity.x -= delta*direccion*roce	
 	velocity.y += gravity * delta
 	linear_velocity = velocity
 	
