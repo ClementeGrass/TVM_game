@@ -1,9 +1,178 @@
-[gd_scene load_steps=3 format=3 uid="uid://bj61qeglx5fkl"]
+[gd_scene load_steps=18 format=3 uid="uid://bj61qeglx5fkl"]
 
 [ext_resource type="Script" path="res://scenes/points.gd" id="1_56m7v"]
+[ext_resource type="Texture2D" uid="uid://ctdjrfiyxqbw2" path="res://assets/pointsBG/background1.png" id="2_uca0k"]
+[ext_resource type="Texture2D" uid="uid://craqa8pwwd2i2" path="res://assets/pointsBG/background2.png" id="3_44oai"]
+[ext_resource type="Texture2D" uid="uid://iio5rr1dwc86" path="res://assets/pointsBG/background3.png" id="4_1t1hg"]
+[ext_resource type="Texture2D" uid="uid://bqtgi8n4hlbr6" path="res://assets/pointsBG/cloud1.png" id="5_5lh65"]
+[ext_resource type="Texture2D" uid="uid://dfk7ud42p1snb" path="res://assets/pointsBG/cloud2.png" id="6_5tknt"]
+[ext_resource type="Texture2D" uid="uid://kvfyu25pskch" path="res://assets/pointsBG/cloud3.png" id="7_jakn5"]
+[ext_resource type="Texture2D" uid="uid://ckjislc8o5aby" path="res://assets/pointsBG/cloud4.png" id="8_rhpr6"]
+[ext_resource type="Texture2D" uid="uid://cc3idptmbjdg7" path="res://assets/pointsBG/cloud5.png" id="9_c6qao"]
+[ext_resource type="Texture2D" uid="uid://c5xgiausewa28" path="res://assets/pointsBG/cloud6.png" id="10_fvndr"]
+[ext_resource type="Texture2D" uid="uid://cpag6fpple8q6" path="res://assets/pointsBG/cloud7.png" id="11_7a4nv"]
+[ext_resource type="Texture2D" uid="uid://dpy0epug4t7s0" path="res://assets/pointsBG/cloud8.png" id="12_hek8f"]
+[ext_resource type="Script" path="res://scenes/maps/nubes_anim.gd" id="13_tblbq"]
 
 [sub_resource type="Theme" id="Theme_26xim"]
 default_font_size = 30
+
+[sub_resource type="Animation" id="Animation_2gvla"]
+resource_name = "nubes"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cloud1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(458, 81), Vector2(426, 82)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cloud4:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(747, 138), Vector2(630, 142)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cloud2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(42, 218), Vector2(-49, 218)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cloud3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(934, 101), Vector2(908, 101)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cloud5:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(983, 275), Vector2(886, 274)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Cloud6:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(845, 38), Vector2(829, 38)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Cloud7:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(418, 221), Vector2(315, 220)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Cloud8:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(130, 95), Vector2(87, 95)]
+}
+
+[sub_resource type="Animation" id="Animation_u0hay"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pj1:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pj2:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pj1_old:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("pj2_old:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jd7mv"]
+_data = {
+"fade_in": SubResource("Animation_u0hay"),
+"nubes": SubResource("Animation_2gvla")
+}
 
 [node name="points" type="Node2D"]
 script = ExtResource("1_56m7v")
@@ -28,7 +197,29 @@ text = "TEST PJ1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="pj1_old" type="Label" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 106.0
+offset_top = 236.0
+offset_right = 469.0
+offset_bottom = 473.0
+theme_override_font_sizes/font_size = 64
+text = "TEST PJ1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="pj2" type="Label" parent="."]
+offset_left = 528.0
+offset_top = 251.0
+offset_right = 898.0
+offset_bottom = 461.0
+theme_override_font_sizes/font_size = 64
+text = "TEST PJ2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="pj2_old" type="Label" parent="."]
+self_modulate = Color(1, 1, 1, 0)
 offset_left = 528.0
 offset_top = 251.0
 offset_right = 898.0
@@ -67,5 +258,61 @@ action_mode = 0
 text = "Rematch"
 alignment = 1
 icon_alignment = 1
+
+[node name="Background1" type="Sprite2D" parent="."]
+z_index = -10
+position = Vector2(523, 441)
+scale = Vector2(1.86328, 1.51953)
+texture = ExtResource("2_uca0k")
+
+[node name="Background2" type="Sprite2D" parent="."]
+z_index = -9
+position = Vector2(527, 504)
+scale = Vector2(1.88125, 1.34375)
+texture = ExtResource("3_44oai")
+
+[node name="Background3" type="Sprite2D" parent="."]
+z_index = -8
+position = Vector2(516.5, 593)
+scale = Vector2(1.86094, 1.05938)
+texture = ExtResource("4_1t1hg")
+
+[node name="Cloud1" type="Sprite2D" parent="."]
+position = Vector2(450.32, 81.24)
+texture = ExtResource("5_5lh65")
+
+[node name="Cloud2" type="Sprite2D" parent="."]
+position = Vector2(20.16, 218)
+texture = ExtResource("6_5tknt")
+
+[node name="Cloud3" type="Sprite2D" parent="."]
+position = Vector2(927.76, 101)
+texture = ExtResource("7_jakn5")
+
+[node name="Cloud4" type="Sprite2D" parent="."]
+position = Vector2(718.92, 138.96)
+texture = ExtResource("8_rhpr6")
+
+[node name="Cloud5" type="Sprite2D" parent="."]
+position = Vector2(959.72, 274.76)
+texture = ExtResource("9_c6qao")
+
+[node name="Cloud6" type="Sprite2D" parent="."]
+position = Vector2(841.16, 38)
+texture = ExtResource("10_fvndr")
+
+[node name="Cloud7" type="Sprite2D" parent="."]
+position = Vector2(393.28, 220.76)
+texture = ExtResource("11_7a4nv")
+
+[node name="Cloud8" type="Sprite2D" parent="."]
+position = Vector2(119.68, 95)
+texture = ExtResource("12_hek8f")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jd7mv")
+}
+script = ExtResource("13_tblbq")
 
 [connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]

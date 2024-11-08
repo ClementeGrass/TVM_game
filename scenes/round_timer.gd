@@ -45,9 +45,17 @@ func change_scene_for_all():
 		print(player.has_potato)
 		#Server tiene potato
 		if i == 1 and player.has_potato:
-			Global.point_j2 += 1
+			if Global.point_j2 == 0:
+				Global.point_j2 += 1
+			else:
+				Global.point_j2_old += 1
+				Global.point_j2 += 1
 		#Cliente tiene potato
 		if i == 2 and player.has_potato:
-			Global.point_j1 += 1
+			if Global.point_j1 == 0:
+				Global.point_j1 += 1
+			else:
+				Global.point_j1 += 1
+				Global.point_j1_old += 1
 		i += 1
 	get_tree().change_scene_to_file("res://scenes/maps/points.tscn")

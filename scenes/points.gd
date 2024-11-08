@@ -3,6 +3,8 @@ extends Node2D
 @onready var curr_round = $ronda
 @onready var pj1 = $pj1
 @onready var pj2 = $pj2
+@onready var pj1_old = $pj1_old
+@onready var pj2_old = $pj2_old
 @onready var ganador = $ganador
 @onready var mejorde = $mejorde
 @onready var rematch = $CheckButton
@@ -36,6 +38,8 @@ func _ready():
 func change_scene_for_all(map_path):
 	pj1.text = ""
 	pj2.text = ""
+	pj1_old.text = ""
+	pj2_old.text = ""
 	curr_round.text = ""
 	mejorde.text = ""
 	#jugador 1 es server 
@@ -60,8 +64,10 @@ func change_scene_for_all(map_path):
 func update_labels():
 	pj1.text = str(Global.point_j1)
 	pj2.text = str(Global.point_j2)
+	pj1_old.text = str(Global.point_j1_old)
+	pj2_old.text = str(Global.point_j2_old)
 	curr_round.text = "Ronda " + str(Global.curr_round) + "/" + str(max_games)
-	mejorde.text = "Mejor de " + str(max_games / 2 + 1)
+	mejorde.text = "Mejor de " + str(max_games)
 
 
 
