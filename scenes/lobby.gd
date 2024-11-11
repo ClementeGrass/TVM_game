@@ -245,6 +245,7 @@ func starting_game(value: bool):
 		#Inicializo las variables globales con las que manejo la victoria y los revanchas
 		for i in Game.players:
 			Global.points_for_player.push_back(0)
+			Global.points_old_for_player.push_back(0)
 			Global.names_for_player.push_back("")
 			Global.rematch_for_player.push_back(false)
 			Global.winners.push_back(pos)

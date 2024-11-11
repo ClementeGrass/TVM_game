@@ -79,10 +79,9 @@ func change_scene_for_all(map_path):
 func update_labels():
 	if Game.players.size()>0:
 		var i = 0
+		var jugadores = player_container.get_children()
 		for player in Game.players:
-			var new_label = Label.new()
-			new_label.text = player.name + ":" + str(Global.points_for_player[i])
-			player_container.add_child(new_label)
+			jugadores[i].text = player.name + ":" + str(Global.points_for_player[i])
 			i+=1
 		curr_round.text = "Ronda " + str(Global.curr_round)
 		mejorde.text = "Hasta " + str(max_games) + " victorias"

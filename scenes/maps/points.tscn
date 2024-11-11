@@ -17,6 +17,81 @@
 [sub_resource type="Theme" id="Theme_26xim"]
 default_font_size = 30
 
+[sub_resource type="Animation" id="Animation_u0hay"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerContainer/pj1:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerContainer/pj2:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("pj1_old:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("pj2_old:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerContainer/pj3:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlayerContainer/pj4:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_2gvla"]
 resource_name = "nubes"
 length = 5.0
@@ -117,57 +192,6 @@ tracks/7/keys = {
 "values": [Vector2(130, 95), Vector2(87, 95)]
 }
 
-[sub_resource type="Animation" id="Animation_u0hay"]
-resource_name = "fade_in"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("pj1:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("pj2:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("pj1_old:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("pj2_old:self_modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jd7mv"]
 _data = {
 "fade_in": SubResource("Animation_u0hay"),
@@ -187,39 +211,19 @@ text = "TEST RONDAS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="pj1" type="Label" parent="."]
-offset_left = 106.0
-offset_top = 236.0
-offset_right = 469.0
-offset_bottom = 473.0
-theme_override_font_sizes/font_size = 64
-text = "TEST PJ1"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="pj1_old" type="Label" parent="."]
-self_modulate = Color(1, 1, 1, 0)
+visible = false
 offset_left = 106.0
 offset_top = 236.0
 offset_right = 469.0
 offset_bottom = 473.0
 theme_override_font_sizes/font_size = 64
 text = "TEST PJ1"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="pj2" type="Label" parent="."]
-offset_left = 528.0
-offset_top = 251.0
-offset_right = 898.0
-offset_bottom = 461.0
-theme_override_font_sizes/font_size = 64
-text = "TEST PJ2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="pj2_old" type="Label" parent="."]
-self_modulate = Color(1, 1, 1, 0)
+visible = false
 offset_left = 528.0
 offset_top = 251.0
 offset_right = 898.0
@@ -264,6 +268,36 @@ offset_left = 250.0
 offset_top = 15.0
 offset_right = 750.0
 offset_bottom = 415.0
+alignment = 1
+
+[node name="pj1" type="Label" parent="PlayerContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="pj2" type="Label" parent="PlayerContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="pj3" type="Label" parent="PlayerContainer"]
+self_modulate = Color(0, 0, 0, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="pj4" type="Label" parent="PlayerContainer"]
+self_modulate = Color(0, 0, 0, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Background1" type="Sprite2D" parent="."]
 z_index = -10
 position = Vector2(523, 441)
@@ -283,35 +317,35 @@ scale = Vector2(1.86094, 1.05938)
 texture = ExtResource("4_1t1hg")
 
 [node name="Cloud1" type="Sprite2D" parent="."]
-position = Vector2(450.32, 81.24)
+position = Vector2(458, 81)
 texture = ExtResource("5_5lh65")
 
 [node name="Cloud2" type="Sprite2D" parent="."]
-position = Vector2(20.16, 218)
+position = Vector2(42, 218)
 texture = ExtResource("6_5tknt")
 
 [node name="Cloud3" type="Sprite2D" parent="."]
-position = Vector2(927.76, 101)
+position = Vector2(934, 101)
 texture = ExtResource("7_jakn5")
 
 [node name="Cloud4" type="Sprite2D" parent="."]
-position = Vector2(718.92, 138.96)
+position = Vector2(747, 138)
 texture = ExtResource("8_rhpr6")
 
 [node name="Cloud5" type="Sprite2D" parent="."]
-position = Vector2(959.72, 274.76)
+position = Vector2(983, 275)
 texture = ExtResource("9_c6qao")
 
 [node name="Cloud6" type="Sprite2D" parent="."]
-position = Vector2(841.16, 38)
+position = Vector2(845, 38)
 texture = ExtResource("10_fvndr")
 
 [node name="Cloud7" type="Sprite2D" parent="."]
-position = Vector2(393.28, 220.76)
+position = Vector2(418, 221)
 texture = ExtResource("11_7a4nv")
 
 [node name="Cloud8" type="Sprite2D" parent="."]
-position = Vector2(119.68, 95)
+position = Vector2(130, 95)
 texture = ExtResource("12_hek8f")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
