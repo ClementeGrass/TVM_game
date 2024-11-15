@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bj61qeglx5fkl"]
+[gd_scene load_steps=17 format=3 uid="uid://bj61qeglx5fkl"]
 
 [ext_resource type="Script" path="res://scenes/points.gd" id="1_56m7v"]
 [ext_resource type="Texture2D" uid="uid://ctdjrfiyxqbw2" path="res://assets/pointsBG/background1.png" id="2_uca0k"]
@@ -16,81 +16,6 @@
 
 [sub_resource type="Theme" id="Theme_26xim"]
 default_font_size = 30
-
-[sub_resource type="Animation" id="Animation_u0hay"]
-resource_name = "fade_in"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerContainer/pj1:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerContainer/pj2:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = false
-tracks/2/path = NodePath("pj1_old:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = false
-tracks/3/path = NodePath("pj2_old:self_modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("PlayerContainer/pj3:self_modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(1, 1, 1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("PlayerContainer/pj4:self_modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_2gvla"]
 resource_name = "nubes"
@@ -194,7 +119,6 @@ tracks/7/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jd7mv"]
 _data = {
-"fade_in": SubResource("Animation_u0hay"),
 "nubes": SubResource("Animation_2gvla")
 }
 
@@ -202,6 +126,7 @@ _data = {
 script = ExtResource("1_56m7v")
 
 [node name="ronda" type="Label" parent="."]
+self_modulate = Color(0, 0, 0, 1)
 offset_left = 284.0
 offset_top = 563.0
 offset_right = 709.0
@@ -234,6 +159,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ganador" type="Label" parent="."]
+self_modulate = Color(0, 0, 0, 1)
 offset_left = 32.0
 offset_top = 186.0
 offset_right = 995.0
@@ -243,6 +169,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="mejorde" type="Label" parent="."]
+self_modulate = Color(0, 0, 0, 1)
 offset_left = 19.0
 offset_top = 530.0
 offset_right = 982.0
@@ -271,28 +198,28 @@ offset_bottom = 415.0
 alignment = 1
 
 [node name="pj1" type="Label" parent="PlayerContainer"]
-self_modulate = Color(1, 1, 1, 0)
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="pj2" type="Label" parent="PlayerContainer"]
-self_modulate = Color(1, 1, 1, 0)
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="pj3" type="Label" parent="PlayerContainer"]
-self_modulate = Color(0, 0, 0, 0)
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="pj4" type="Label" parent="PlayerContainer"]
-self_modulate = Color(0, 0, 0, 0)
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 horizontal_alignment = 1
@@ -317,6 +244,7 @@ scale = Vector2(1.86094, 1.05938)
 texture = ExtResource("4_1t1hg")
 
 [node name="Cloud1" type="Sprite2D" parent="."]
+z_index = -1
 position = Vector2(458, 81)
 texture = ExtResource("5_5lh65")
 
@@ -329,6 +257,7 @@ position = Vector2(934, 101)
 texture = ExtResource("7_jakn5")
 
 [node name="Cloud4" type="Sprite2D" parent="."]
+z_index = -1
 position = Vector2(747, 138)
 texture = ExtResource("8_rhpr6")
 
@@ -341,6 +270,7 @@ position = Vector2(845, 38)
 texture = ExtResource("10_fvndr")
 
 [node name="Cloud7" type="Sprite2D" parent="."]
+z_index = -1
 position = Vector2(418, 221)
 texture = ExtResource("11_7a4nv")
 
