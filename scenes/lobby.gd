@@ -33,6 +33,14 @@ var _menu_stack: Array[Control] = []
 @onready var fox_green: AnimatedSprite2D = $FoxGreen
 @onready var fox_pink: AnimatedSprite2D = $FoxPink
 
+var maps = [
+	"res://scenes/main.tscn",
+	"res://scenes/maps/map1.tscn",
+	"res://scenes/maps/map2.tscn",
+	"res://scenes/maps/map3.tscn",
+	"res://scenes/maps/map4.tscn",
+	"res://scenes/maps/map5.tscn"
+]
 
 func _ready():
 	if Game.multiplayer_test:
@@ -242,6 +250,10 @@ func starting_game(value: bool):
 	if value:
 		start_timer.start()
 		var pos = 0
+		if is_multiplayer_authority():
+			Global.map_order.shuffle()
+			var new_order = Global.map_order
+			rpc("send_new_order",new_order)
 		#Inicializo las variables globales con las que manejo la victoria y los revanchas
 		for i in Game.players:
 			Global.points_for_player.push_back(0)
@@ -253,11 +265,15 @@ func starting_game(value: bool):
 	else:
 		start_timer.stop()
 
+@rpc("any_peer","reliable")	
+func send_new_order(order) -> void:
+	Global.map_order = order
 
 @rpc("any_peer", "call_local", "reliable")
-func start_game() -> void:
+func start_game(first_map: int) -> void:
 	Game.players.sort_custom(func(a, b): return a.index < b.index)
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	#get_tree().change_scene_to_file("res://scenes/main.tscn")
+	get_tree().change_scene_to_file(maps[first_map])
 
 
 
@@ -284,7 +300,7 @@ func _disconnect():
 func _on_start_timer_timeout() -> void:
 	if multiplayer.is_server():
 		print(Global.points_for_player.size())	
-		start_game.rpc()
+		start_game.rpc(Global.map_order[0])
 
 
 func _hide_menus():

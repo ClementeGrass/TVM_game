@@ -5,6 +5,15 @@ var player_index = 1
 
 @onready var start_game_timer: Timer = $StartGameTimer
 
+var maps = [
+	"res://scenes/main.tscn",
+	"res://scenes/maps/map1.tscn",
+	"res://scenes/maps/map2.tscn",
+	"res://scenes/maps/map3.tscn",
+	"res://scenes/maps/map4.tscn",
+	"res://scenes/maps/map5.tscn"
+]
+
 func _ready():
 	for i in Game.test_players.size():
 		var test_player = Game.test_players[i]
@@ -62,10 +71,12 @@ func send_player_data_id(index, id):
 	Game.players[index].id = id
 
 func _on_start_game_timeout() -> void:
-	start_game.rpc()
+	#Shuffles map_order and calls rpc with that map order
+	Global.map_order.shuffle()
+	start_game.rpc(Global.map_order[0])
 
 @rpc("reliable", "call_local")
-func start_game() -> void:
+func start_game(first_map: int) -> void:
 	var pos = 0
 #Inicializo las variables globales con las que manejo la victoria y los revanchas
 	for i in Game.players:
@@ -75,4 +86,9 @@ func start_game() -> void:
 		Global.rematch_for_player.push_back(false)
 		Global.winners.push_back(pos)
 		pos += 1
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	#get_tree().change_scene_to_file("res://scenes/main.tscn")
+	get_tree().change_scene_to_file(maps[first_map])
+
+@rpc("any_peer","reliable")	
+func send_new_order(order) -> void:
+	Global.map_order = order

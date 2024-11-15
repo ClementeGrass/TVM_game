@@ -5,7 +5,7 @@ extends Node2D
 @onready var mejorde = $mejorde
 @onready var rematch = $CheckButton
 @onready var player_container = $PlayerContainer
-var max_games = 1
+var max_games = 7
 var players_ready = 0
 
 var maps = [
@@ -28,7 +28,10 @@ func _ready():
 	await get_tree().create_timer(5).timeout
 	
 	if is_multiplayer_authority():
-		var random_index = randi() % maps.size() 
+		Global.map_turn+=1
+		if(Global.map_turn>len(maps)-1):
+			Global.map_turn = 0
+		var random_index = Global.map_order[Global.map_turn]
 		var random_map = maps[random_index]
 		rpc("change_scene_for_all", random_map)
 

@@ -62,9 +62,7 @@ func _ready() -> void:
 			var papa = 0
 			#Acá me debo asegurar de entregarle la papa a alguien que no sea espectador
 			while true:
-				print(Game.players.size())
 				papa = randi() % Game.players.size()
-				print(papa)
 				if papa in Global.winners:
 					break
 			assign_potato.rpc(papa)
