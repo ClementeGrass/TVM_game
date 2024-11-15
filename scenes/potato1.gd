@@ -12,17 +12,18 @@ var velocity: Vector2
 
 func _ready() -> void:
 	# Inicializa la velocidad vertical
-	velocity.y = initial_vertical_velocity
+	#velocity.y = initial_vertical_velocity
 	add_to_group("potato")
 	
 
 func setup_(speed_: int) -> void:
-	velocity.x = speed_
+	#velocity.x = speed_
+	apply_central_impulse(Vector2(speed_,initial_vertical_velocity))
 
-func _physics_process(delta: float) -> void:
-	if abs(velocity.x) > 0.1:
-		var direccion = velocity.x/abs(velocity.x)
-		velocity.x -= delta*direccion*roce	
-	velocity.y += gravity * delta
-	linear_velocity = velocity
+#func _physics_process(delta: float) -> void:
+#	if abs(velocity.x) > 0.1:
+#		var direccion = velocity.x/abs(velocity.x)
+#		velocity.x -= delta*direccion*roce	
+#	velocity.y += gravity * delta
+#	linear_velocity = velocity
 	

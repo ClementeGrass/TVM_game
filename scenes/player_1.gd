@@ -180,7 +180,7 @@ func throw_Potato() -> void:
 			
 	var potato_inst = potato_scene.instantiate()
 	var direction = sprite.scale.x
-	potato_inst.velocity.x = 400 * direction
+	potato_inst.setup_(400*direction)
 	potato_inst.add_to_group("potato")
 	potato_inst.global_position = global_position
 	potato_inst.global_rotation = global_rotation

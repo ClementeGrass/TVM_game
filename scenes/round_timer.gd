@@ -2,7 +2,7 @@ extends Timer
 
 @onready var round_timer = $"."
 @onready var timer_label = $Clock/Label
-var round_duration = 5
+var round_duration = 60
 var round_over = true
 
 #Ready function thats is in charge of telling every player (and server) that the round has started
