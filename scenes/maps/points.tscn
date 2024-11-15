@@ -180,6 +180,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CheckButton" type="CheckButton" parent="."]
+self_modulate = Color(0, 0, 0, 1)
 offset_left = 459.0
 offset_top = 487.0
 offset_right = 576.0
