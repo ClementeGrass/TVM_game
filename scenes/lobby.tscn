@@ -397,21 +397,21 @@ scale = Vector2(10, 10)
 texture = ExtResource("4_1i7c2")
 
 [node name="Fox" type="AnimatedSprite2D" parent="."]
-position = Vector2(362, 500)
+position = Vector2(124, 500)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_bhxri")
 
 [node name="FoxBlue" type="AnimatedSprite2D" parent="."]
-position = Vector2(462, 500)
+position = Vector2(224, 500)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_x4u5y")
 
 [node name="FoxGreen" type="AnimatedSprite2D" parent="."]
-position = Vector2(562, 500)
+position = Vector2(824, 500)
 scale = Vector2(2.55303, 2.5)
 sprite_frames = SubResource("SpriteFrames_wwtul")
 
 [node name="FoxPink" type="AnimatedSprite2D" parent="."]
-position = Vector2(662, 500)
+position = Vector2(924, 500)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_fqt7r")
