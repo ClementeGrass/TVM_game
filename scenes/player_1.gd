@@ -211,7 +211,8 @@ func potato_been_thrown(thrown: bool) -> void:
 func take_potato() -> void:
 	rpc("potato_been_thrown",false)
 	has_thrown_potato = false
-	rpc_id(1,"change_speed",300.0)
+	SPEED = 300.0
+	rpc("change_speed",300.0)
 	
 #Function that tells the players that the potato has been passed to someone else
 #As well as changing my one potato_state, makes sure to change the other player´s potato_state
