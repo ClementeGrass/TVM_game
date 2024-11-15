@@ -40,12 +40,9 @@ func autoUpdate() -> State:
 func Physics_update(delta:float) -> void:
 	var move_input = Input.get_axis("move_left","move_right")
 	
-	#Sin momentum al ir de der a izq o der a izq pero si de der o izq y soltar boton 
+	#Sin momentum al ir de der a izq o der a izq 
 	var target_velocity_x = parent.SPEED * move_input
-	if (move_input > 0 and parent.velocity.x < 0) or (move_input < 0 and parent.velocity.x > 0):
-		parent.velocity.x = target_velocity_x
-	else:
-		parent.velocity.x = move_toward(parent.velocity.x, target_velocity_x, parent.ACCELERATION * delta)
+	parent.velocity.x = target_velocity_x
 	
 	#con momentum en todas situaciones der izq o izq der
 	#parent.velocity.x = move_toward(parent.velocity.x, parent.SPEED* move_input, parent.ACCELERATION * delta)
