@@ -33,7 +33,12 @@ func autoUpdate() -> State:
 	return null	
 func Physics_update(delta:float) -> void:
 	var move_input = Input.get_axis("move_left","move_right")
-	parent.velocity.x = move_toward(parent.velocity.x, parent.SPEED* move_input, parent.ACCELERATION * delta)
+	#Sin momentum al ir de der a izq o der a izq 
+	var target_velocity_x = parent.SPEED * move_input
+	parent.velocity.x = target_velocity_x
+	
+	#con momentum en todas situaciones der izq o izq der
+	#parent.velocity.x = move_toward(parent.velocity.x, parent.SPEED* move_input, parent.ACCELERATION * delta)
 	if move_input>0:
 		sprite.scale.x = 1.5
 		parent.rpc("send_sprite",1.5)

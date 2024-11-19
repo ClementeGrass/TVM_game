@@ -5,7 +5,7 @@ extends Node2D
 @onready var mejorde = $mejorde
 @onready var rematch = $CheckButton
 @onready var player_container = $PlayerContainer
-var max_games = 7
+var max_games = 5
 var players_ready = 0
 
 var maps = [
