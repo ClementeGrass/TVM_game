@@ -9,6 +9,7 @@ var _menu_stack: Array[Control] = []
 @onready var user = %User
 @onready var host = %Host
 @onready var join = %Join
+@onready var tutorial = %Tutorial
 @onready var ip = %IP
 @onready var back_join: Button = %BackJoin
 @onready var confirm_join: Button = %ConfirmJoin
@@ -17,11 +18,16 @@ var _menu_stack: Array[Control] = []
 @onready var role_c: Button = %RoleC
 @onready var role_d: Button = %RoleD
 @onready var back_ready: Button = %BackReady
+@onready var volver_tutorial: Button = %Volver
+@onready var binds: Button = %Binds
+@onready var volver_binds = %VolverBinds
 @onready var ready_toggle: Button = %Ready
 @onready var menus: MarginContainer = %Menus
 @onready var start_menu = %StartMenu
 @onready var join_menu = %JoinMenu
 @onready var ready_menu = %ReadyMenu
+@onready var tutorial_menu = %TutorialMenu
+@onready var binds_menu = %BindsMenu
 @onready var players = %Players
 @onready var start_timer: Timer = $StartTimer
 @onready var time_container: HBoxContainer = %TimeContainer
@@ -58,10 +64,14 @@ func _ready():
 	
 	host.pressed.connect(_on_host_pressed)
 	join.pressed.connect(_on_join_pressed)
+	tutorial.pressed.connect(_on_tutorial_pressed)
+	binds.pressed.connect(_on_binds_pressed)
 	
 	confirm_join.pressed.connect(_on_confirm_join_pressed)
 	
 	back_join.pressed.connect(_back_menu)
+	volver_tutorial.pressed.connect(_back_menu)
+	volver_binds.pressed.connect(_back_menu)
 	back_ready.pressed.connect(_back_menu)
 	
 	fox.play("default")
@@ -126,7 +136,12 @@ func _on_host_pressed() -> void:
 
 func _on_join_pressed() -> void:
 	_go_to_menu(join_menu)
+	
+func _on_tutorial_pressed() -> void:
+	_go_to_menu(tutorial_menu)	
 
+func _on_binds_pressed() -> void:
+	_go_to_menu(binds_menu)
 
 func _on_confirm_join_pressed() -> void:
 	var peer = ENetMultiplayerPeer.new()

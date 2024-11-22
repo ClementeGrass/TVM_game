@@ -234,6 +234,7 @@ layout_mode = 2
 
 [node name="StartMenu" type="VBoxContainer" parent="PanelContainer/Menus"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 
@@ -261,6 +262,11 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Join"
+
+[node name="Tutorial" type="Button" parent="PanelContainer/Menus/StartMenu/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "How to Play"
 
 [node name="JoinMenu" type="VBoxContainer" parent="PanelContainer/Menus"]
 unique_name_in_owner = true
@@ -298,6 +304,7 @@ layout_mode = 2
 
 [node name="ReadyMenu" type="VBoxContainer" parent="PanelContainer/Menus"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 
@@ -368,6 +375,82 @@ text = "Starting in:"
 unique_name_in_owner = true
 layout_mode = 2
 text = "5"
+
+[node name="TutorialMenu" type="VBoxContainer" parent="PanelContainer/Menus"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Titulo" type="Label" parent="PanelContainer/Menus/TutorialMenu"]
+layout_mode = 2
+text = "How to play Papa Caliente :)"
+horizontal_alignment = 1
+
+[node name="Objetivo" type="Label" parent="PanelContainer/Menus/TutorialMenu"]
+layout_mode = 2
+text = "Objetivo: 
+"
+
+[node name="Label2" type="Label" parent="PanelContainer/Menus/TutorialMenu"]
+layout_mode = 2
+text = "Al final de cada ronda debes no ser 
+la persona que tiene  la papa,
+ ¡tienes que pasarsela a los  otros 
+jugadores! Si la tienes, puedes
+tirarla o pasarsela directamente, 
+ahí  la decisión es solo tuya."
+
+[node name="Label3" type="Label" parent="PanelContainer/Menus/TutorialMenu"]
+layout_mode = 2
+text = "¿Cómo lo logro?"
+
+[node name="Label" type="Label" parent="PanelContainer/Menus/TutorialMenu"]
+layout_mode = 2
+text = "Aprovecha al máximo todas las
+herramientas que tengas para 
+escaparte (o alcanzar a alguien)
+ que nadie en el mundo queire 
+ser el que tiene la papa."
+
+[node name="Binds" type="Button" parent="PanelContainer/Menus/TutorialMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Ver Botones"
+
+[node name="Volver" type="Button" parent="PanelContainer/Menus/TutorialMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Back
+"
+
+[node name="BindsMenu" type="VBoxContainer" parent="PanelContainer/Menus"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/Menus/BindsMenu"]
+layout_mode = 2
+text = "Botones"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/Menus/BindsMenu"]
+layout_mode = 2
+text = "A->Move Left
+B-> Move Right
+SPACE -> Jump
+SHIFT -> Crouch
+SHIFT+A/B -> Roll
+S -> Wall Grab
+SHIFT IN AIR -> Fast fall
+W -> Upward Boost
+R -> Pass potato
+Q -> Throw potato
+E -> Emote
+"
+
+[node name="VolverBinds" type="Button" parent="PanelContainer/Menus/BindsMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Back"
 
 [node name="StartTimer" type="Timer" parent="."]
 
