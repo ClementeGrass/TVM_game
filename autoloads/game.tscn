@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6cfq0qe7ynw6"]
+[gd_scene load_steps=8 format=3 uid="uid://b6cfq0qe7ynw6"]
 
 [ext_resource type="Script" path="res://autoloads/game.gd" id="1_fmbhi"]
 [ext_resource type="Script" path="res://scripts/player_data_resource.gd" id="2_xaonh"]
+[ext_resource type="AudioStream" uid="uid://dydfyamd4h4i" path="res://audio/Mix Temas de música clásica sin derechos de autor GRATIS  (no copyright music).mp3" id="3_65chq"]
 
 [sub_resource type="Resource" id="Resource_8varw"]
 script = ExtResource("2_xaonh")
@@ -36,3 +37,7 @@ offset_left = -10.0
 offset_bottom = 23.0
 grow_horizontal = 0
 horizontal_alignment = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_65chq")
+autoplay = true
