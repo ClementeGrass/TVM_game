@@ -8,6 +8,8 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_l2yji"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_cd0mg"]
+normal = Vector2(-1, 8.65747e-07)
+distance = -0.572625
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_vxpds")
@@ -46,6 +48,11 @@ rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_l2yji")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldBorders"]
+position = Vector2(1024, 0)
+rotation = 4.71239
+shape = SubResource("WorldBoundaryShape2D_cd0mg")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBorders"]
 position = Vector2(1024, 0)
 rotation = 4.71239
 shape = SubResource("WorldBoundaryShape2D_cd0mg")
