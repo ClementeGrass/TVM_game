@@ -268,6 +268,11 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "How to Play"
 
+[node name="Credits" type="Button" parent="PanelContainer/Menus/StartMenu/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Credits"
+
 [node name="JoinMenu" type="VBoxContainer" parent="PanelContainer/Menus"]
 unique_name_in_owner = true
 visible = false
@@ -378,6 +383,7 @@ text = "5"
 
 [node name="TutorialMenu" type="VBoxContainer" parent="PanelContainer/Menus"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [node name="Titulo" type="Label" parent="PanelContainer/Menus/TutorialMenu"]
@@ -451,6 +457,43 @@ E -> Emote
 unique_name_in_owner = true
 layout_mode = 2
 text = "Back"
+
+[node name="CreditsMenu" type="VBoxContainer" parent="PanelContainer/Menus"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CreditsTitulo" type="Label" parent="PanelContainer/Menus/CreditsMenu"]
+layout_mode = 2
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="DesarroladoresTitulo" type="Label" parent="PanelContainer/Menus/CreditsMenu"]
+layout_mode = 2
+text = "Desarrolladores:"
+
+[node name="Desarrolladores" type="Label" parent="PanelContainer/Menus/CreditsMenu"]
+layout_mode = 2
+text = "-Nicolás del Valle
+-Clemente Grass
+-Diego San Martín"
+
+[node name="TextureTitulos" type="Label" parent="PanelContainer/Menus/CreditsMenu"]
+layout_mode = 2
+text = "Texturas y Animaciones:"
+
+[node name="Label" type="Label" parent="PanelContainer/Menus/CreditsMenu"]
+layout_mode = 2
+text = "-Papa: alexkovacart.itch.io
+-Zorro y Mapas: ansimuz.itch.io
+-Fondos: edermunizz.itch.io/
+-Smoke: nyknck.itch.io
+-Music: youtube.com/@parzibalmusic9615"
+
+[node name="VolverCredits" type="Button" parent="PanelContainer/Menus/CreditsMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Back
+"
 
 [node name="StartTimer" type="Timer" parent="."]
 
