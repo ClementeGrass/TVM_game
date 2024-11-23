@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ckb01ew75oaan"]
+[gd_scene load_steps=8 format=3 uid="uid://ckb01ew75oaan"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_73bun"]
 [ext_resource type="PackedScene" uid="uid://cwst36spixodp" path="res://scenes/player_1.tscn" id="2_v4rdk"]
@@ -8,6 +8,10 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_l2yji"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_cd0mg"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xanix"]
+normal = Vector2(-1, 8.65747e-07)
+distance = -0.572625
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_73bun")
@@ -46,5 +50,10 @@ shape = SubResource("WorldBoundaryShape2D_l2yji")
 position = Vector2(1024, 0)
 rotation = 4.71239
 shape = SubResource("WorldBoundaryShape2D_cd0mg")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBorders"]
+position = Vector2(1024, 0)
+rotation = 4.71239
+shape = SubResource("WorldBoundaryShape2D_xanix")
 
 [node name="RoundTimer" parent="." instance=ExtResource("4_uthf7")]
