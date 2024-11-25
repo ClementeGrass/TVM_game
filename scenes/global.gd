@@ -17,6 +17,9 @@ var points_old_for_player = []
 var names_for_player = []
 var rematch_for_player = []
 var winners = []
+var last_loser = []
 var map_order=[0,1,2,3,4,5]
 var map_turn = 0
+
+
 

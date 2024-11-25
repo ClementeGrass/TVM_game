@@ -2,7 +2,7 @@ extends Timer
 
 @onready var round_timer = $"."
 @onready var timer_label = $Clock/Label
-var round_duration = 60
+var round_duration = 10
 var round_over = true
 
 #Ready function thats is in charge of telling every player (and server) that the round has started
@@ -44,12 +44,17 @@ func end_round():
 #Rpc funciton that passes the screen to the points screen
 @rpc("call_local", "reliable")
 func change_scene_for_all():
-	#PARA SISTEMA DE DOS JUGADORES SOLAMENTE
 	var players = get_tree().current_scene.get_node("Players").get_children()
 	var i = 0
+	if not Global.last_loser.is_empty():
+		Global.last_loser.clear()
 	for player in players:
 		#Le sumo los puntos a los jugadores que no tienen la papa y no están de spectators
 		if not player.has_potato and not player.spectator:
 			Global.points_for_player[i] += 1
+			Global.last_loser.append(false)
+		if player.has_potato:
+			Global.last_loser.append(true)
 		i += 1		
+	print(Global.last_loser)
 	get_tree().change_scene_to_file("res://scenes/maps/points.tscn")
