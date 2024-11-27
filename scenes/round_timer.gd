@@ -1,9 +1,15 @@
 extends Timer
 
 @onready var round_timer = $"."
-@onready var timer_label = $Clock/Label
+@onready var second_label = $Panel/Seconds
+@onready var msecond_label = $Panel/Milliseconds
 var round_duration = 60
 var round_over = true
+
+
+var time: float = 0.0
+var seconds: int = 0
+var mseconds: int = 0 
 
 #Ready function thats is in charge of telling every player (and server) that the round has started
 
@@ -32,12 +38,14 @@ func start_round():
 #Rpc function that updates the timer label
 @rpc("authority", "call_remote", "reliable")
 func update_timer_label(time_left):
-	timer_label.text = str(round(time_left)) + "s"
+	seconds = time_left
+	mseconds = fmod(time_left, 1) * 100
+	second_label.text = "%02d" % seconds
+	msecond_label.text = "%02d" % mseconds
 
 #Rpc funciton that ends the round
 @rpc("authority", "call_remote", "reliable")
 func end_round():
-	timer_label.text = "Round Over!" 
 	print("Round over!")
 	rpc("change_scene_for_all")
 

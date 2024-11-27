@@ -255,4 +255,3 @@ func notify_stun() -> void:
 	state_machine.change_state(state_machine.current_state,state_machine.states["stunned"])
 	timer.start()
 	
-

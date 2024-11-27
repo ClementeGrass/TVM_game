@@ -19,6 +19,7 @@ properties/0/spawn = true
 properties/0/replication_mode = 1
 
 [node name="Main" type="Node2D"]
+position = Vector2(1, -1)
 script = ExtResource("1_ysfbh")
 player_scene = ExtResource("2_e4qbi")
 

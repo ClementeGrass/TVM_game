@@ -79,4 +79,3 @@ func assign_potato(papa: int) -> void:
 	if papa < players.get_child_count():
 		var player = players.get_child(papa)
 		player.set_potato_state(true)
-
